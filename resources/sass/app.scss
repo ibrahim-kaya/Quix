@@ -1,0 +1,42 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer utilities {
+    .btn {
+        @apply rounded-md px-4 py-2 m-2 transition duration-300 ease-linear select-none focus:outline-none focus:shadow;
+    }
+
+    .btn--primary {
+        @apply btn;
+        @apply border border-green-500 bg-green-500 text-white hover:bg-green-600;
+    }
+
+    .btn--disabled {
+        @apply btn;
+        @apply border border-gray-400 bg-gray-100 hover:bg-gray-200 text-gray-600 cursor-not-allowed;
+    }
+
+
+    .quiz-table tr{
+        @apply transition duration-300 hover:bg-gray-100;
+    }
+
+    .quiz-table td {
+        @apply transition duration-300 hover:bg-green-100;
+    }
+
+    .quiz-table td:not(.quiz-table-baslik) {
+        @apply hidden;
+        @apply md:table-cell;
+    }
+
+    .quiz-table-info {
+        @apply md:hidden;
+    }
+}
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';

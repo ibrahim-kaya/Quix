@@ -26,5 +26,8 @@ Route::group([
     'prefix'=>'admin'
     ], function () {
 
+    //admin func
 
 });
+
+Route::resource('quizler', \App\Http\Controllers\QuizController::class);
