@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Http\Requests\QuizCreateReq;
 
 class QuizController extends Controller
 {
@@ -25,7 +26,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        return 'create';
+        return view('quiz.olustur');
     }
 
     /**
@@ -34,9 +35,9 @@ class QuizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuizCreateReq $request)
     {
-        //
+        return redirect()->route('quizler.index')->withSuccess('Quiz başarıyla oluşturuldu!');
     }
 
     /**

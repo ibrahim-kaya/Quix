@@ -1,12 +1,14 @@
 <x-app-layout>
-    <x-slot name="header">Anasayfa</x-slot>
+    <x-slot name="header">Quizler</x-slot>
 
     <div>
-        <button
-            type="button"
-            class="btn btn--primary">
-            <i class="fa fa-plus"></i> Yeni Oluştur
-        </button>
+        <div class="text-right">
+            <a href="{{route('quizler.create')}}"><button
+                type="button"
+                class="btn btn--primary mr-2 mt-2">
+                <i class="fa fa-plus"></i> Yeni Oluştur
+            </button></a>
+        </div>
 
         <table class="min-w-full leading-normal quiz-table mb-5 mt-5">
             <thead class="hidden sm:table-header-group">
