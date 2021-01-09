@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Quiz extends Model
 {
     use HasFactory;
+
+    public function getUser(){
+        return $this->hasOne('App\Models\User', 'id','olusturan_id');
+    }
 }

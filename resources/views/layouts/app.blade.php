@@ -36,7 +36,7 @@
     <!-- Page Content -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg relative">
                 @if($errors->any())
                     <div id="err" class="p-2 text-center transition duration-300">
                         <div class="inline-flex items-center bg-white leading-none bg-red-200 text-red-600 rounded-full p-2 shadow text-teal text-sm">
@@ -56,12 +56,24 @@
                     </div>
                 @endif
                 {{ $slot }}
+                <footer class="mt-4 border-t py-3 text-xs text-gray-500 text-center leading-5">
+                    <a href="">Hizmet Şartları</a> · <a href="">Gizlilik Politikası</a> · <a href="">Çerez Politikası</a><br>
+                    <a href="">Twitter</a> · <a href="">Instagram</a> · <a href="">Facebook</a><br>
+                    © 2021 Quix
+                </footer>
             </div>
         </div>
     </div>
 
 
 </div>
+
+@stack('modals')
+
+@livewireScripts
+
+
+</body>
 
 <script>
     $('#err-kapat').click(function (){
@@ -74,9 +86,4 @@
             }, 300);
     });
 </script>
-
-@stack('modals')
-
-@livewireScripts
-</body>
 </html>

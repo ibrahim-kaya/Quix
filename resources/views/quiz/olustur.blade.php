@@ -16,6 +16,6 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn--primary">Quiz Oluştur</button>
+        <button type="submit" class="btn btn--primary mb-5 ml-5">Quiz Oluştur</button>
     </form>
 </x-app-layout>

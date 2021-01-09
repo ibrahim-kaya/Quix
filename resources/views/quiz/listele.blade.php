@@ -2,74 +2,44 @@
     <x-slot name="header">Quizler</x-slot>
 
     <div>
-        <div class="text-right">
+        <div class="flex justify-between bg-gray-200 border-b border-gray-300 py-2 shadow-inner">
+            <div>
+                blabla
+            </div>
+
+            <div>
             <a href="{{route('quizler.create')}}"><button
-                type="button"
-                class="btn btn--primary mr-2 mt-2">
-                <i class="fa fa-plus"></i> Yeni Oluştur
-            </button></a>
+                    type="button"
+                    class="btn btn--primary mr-2 my-2">
+                    <i class="fa fa-plus"></i> Yeni Oluştur
+                </button></a>
+            </div>
         </div>
 
-        <table class="min-w-full leading-normal quiz-table mb-5 mt-5">
-            <thead class="hidden sm:table-header-group">
-            <tr>
-                <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Quiz
-                </th>
-                <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Oluşturan
-                </th>
-                <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Oluşturma Tarihi
-                </th>
-                <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Durum
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($quizzes as $quiz)
-            <tr>
-                <td class="px-5 py-5 border-b border-gray-200 text-sm quiz-table-baslik cursor-pointer">
-                    <p class="text-gray-900 whitespace-no-wrap text-lg">{{ $quiz->baslik }}</p>
-                    <div class="quiz-table-info"><p class="text-xs">test</p></div>
-                </td>
-                <td class="px-5 py-5 border-b border-gray-200 text-sm cursor-pointer">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0 w-10 h-10">
-                            <img class="w-full h-full rounded-full"
-                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                 alt="" />
+        <div class="flex flex-wrap mx-1 overflow-hidden">
+
+            @foreach($data['quizzes'] as $quiz)
+                <div class="my-2 pr-1 xl:pr-2 pl-1 w-full overflow-hidden xl:w-1/3 md:w-2/4 h-56">
+                    <div class="relative bg-blue-50 hover:bg-blue-100 transition duration-300 border border-blue-200 h-full rounded-lg relative overflow-hidden shadow-md shadow-inner">
+                        <div class="bg-green-500 absolute right-0 py-1 px-2 rounded-md opacity-80 rounded-br-none rounded-tl-none text-white">
+                            <i class="fas fa-check"></i> Çözüldü
                         </div>
-                        <div class="ml-3">
-                            <p class="text-gray-900 whitespace-no-wrap">
-                                Vera Carpenter
-                            </p>
+                        <div class="flex justify-center h-32 overflow-hidden">
+                            <a href="#"><img src="https://agentmajeur.fr/wp-content/uploads/femme-question-bleue-1.jpg" alt="Quiz Resim" class="w-full"></a>
                         </div>
+                        <a href="#" class="p-3 yazi-kisalt" title="{{ $quiz->baslik }}">{{ $quiz->baslik }}</a><br>
+                        <span class="p-3 text-xs text-gray-500 absolute bottom-0">Oluşturan: <a href="#" class="text-black">{{ $quiz->getUser->name }}</a>&nbsp;&nbsp;·
+                        <span class="text-xs ml-1 text-gray-500">7 May 2021</span>
+                        </span>
+
                     </div>
-                </td>
-                <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                    <p class="text-gray-900 whitespace-no-wrap">
-                        Jan 21, 2020
-                    </p>
-                </td>
-                <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <span
-                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden
-                                              class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                        <span class="relative">Activo</span>
-                                    </span>
-                </td>
-            </tr>
+
+                </div>
             @endforeach
-            </tbody>
-        </table>
-        <div class="px-5 pb-5">{{$quizzes->links()}}</div>
+
+        </div>
+
+        <div class="px-5 pb-5">{{$data['quizzes']->links()}}</div>
     </div>
 
 </x-app-layout>

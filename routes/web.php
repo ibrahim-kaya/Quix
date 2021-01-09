@@ -31,3 +31,4 @@ Route::group([
 });
 
 Route::resource('quizler', \App\Http\Controllers\QuizController::class);
+Route::resource('quizlerim', \App\Http\Controllers\EditQuiz::class);

@@ -2,35 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Models\Quiz;
-use App\Http\Requests\QuizCreateReq;
-use App\Http\Requests\QuizUpdateReq;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class QuizController extends Controller
+class EditQuiz extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function __construct() {
-
         $this->middleware('auth');
-        $this->middleware('PostEditPerm', ['only' => ['edit']]);
     }
-
 
     public function index()
     {
         $data = array(
-            'quizzes' => Quiz::orderBy('id', 'desc')->paginate(12)
+            'quizzes' => Quiz::where('olusturan_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(5),
+            'durumtxt'=> array('Taslak', 'Yayında')
         );
 
-        return view('quiz.listele')->with('data', $data);
+        return view('quiz.quizlerim')->with('data', $data);
     }
 
     /**
@@ -40,7 +34,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        return view('quiz.olustur');
+        //
     }
 
     /**
@@ -49,15 +43,9 @@ class QuizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(QuizCreateReq $request)
+    public function store(Request $request)
     {
-        /*$quiz = new Quiz();
-        $quiz->baslik = $request->baslik;
-        $quiz->aciklama = $request->aciklama;
-        $quiz->olusturan_id = Auth::user()->id;
-        $quiz->save();*/
-
-        return redirect()->route('quizler.index')->withSuccess('Quiz başarıyla oluşturuldu!');
+        //
     }
 
     /**
@@ -79,8 +67,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        $quiz = Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!');
-        return view('quiz.duzenle', compact('quiz'));
+        //
     }
 
     /**
@@ -90,11 +77,9 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(QuizUpdateReq $request, $id)
+    public function update(Request $request, $id)
     {
-        $quiz = Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!');
-        Quiz::where('id', $id)->update($request->except(['_method', '_token']));
-        return redirect()->route('quizlerim.index')->withSuccess('Quiz başarıyla güncellendi!');
+        //
     }
 
     /**

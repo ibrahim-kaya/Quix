@@ -15,10 +15,11 @@ class QuizMig extends Migration
     {
         Schema::create('Quizzes', function (Blueprint $table) {
             $table->id();
+            $table->integer('olusturan_id');
             $table->string('baslik');
             $table->string('aciklama')->nullable();
             $table->timestamp('expires_at')->nullable();
-            $table->enum('durum', ['yayinda', 'taslak', 'silindi'])->default('taslak');
+            $table->integer()->default('0');
             $table->timestamps();
         });
     }
