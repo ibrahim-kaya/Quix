@@ -12,6 +12,11 @@
         @apply border border-green-500 bg-green-500 text-white hover:bg-green-600;
     }
 
+    .btn--orange {
+        @apply btn;
+        @apply border border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-600;
+    }
+
     .btn--red {
         @apply btn;
         @apply border border-red-500 bg-red-500 text-white hover:bg-red-600;
@@ -27,9 +32,6 @@
         @apply transition duration-300 hover:bg-gray-100;
     }
 
-    .quiz-table td:not(:nth-child(3)):not(:nth-child(4)) {
-        @apply transition duration-300 hover:bg-green-100;
-    }
 
     .quiz-table td:not(.quiz-table-baslik) {
         @apply hidden;

@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="flex flex-wrap mx-1 overflow-hidden">
+        <div class="flex flex-wrap mx-1 overflow-hidden pt-5">
 
             @foreach($data['quizzes'] as $quiz)
                 <div class="my-2 pr-1 xl:pr-2 pl-1 w-full overflow-hidden xl:w-1/3 md:w-2/4 h-56">
