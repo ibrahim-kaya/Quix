@@ -38,8 +38,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg relative">
                 @if($errors->any() || session('error'))
-                    <div id="err" class="p-2 text-center transition duration-300">
-                        <div class="inline-flex items-center bg-white leading-none bg-red-200 text-red-600 rounded-full p-2 shadow text-teal text-sm">
+                    <div id="err" class="p-2 text-center transition duration-500 w-full">
+                        <div class="inline-flex items-center bg-white leading-none bg-red-200 text-red-600 rounded-full p-2 shadow text-sm">
                             <span class="inline-flex bg-red-600 text-white rounded-full h-6 px-3 justify-center items-center"><i class="fas fa-exclamation"></i></span>
                             <span class="inline-flex px-2">@if($errors->any()) {!! $errors->first() !!} @else {!! session('error') !!} @endif</span>
                             <span id ="err-kapat" class="inline-flex px-2 cursor-pointer">x</span>
@@ -74,7 +74,7 @@
 
 <script>
     $('#err-kapat').click(function (){
-        $('#err').css('transform', 'scaleY(0)');
+        $('#err').css('transform', 'scale(0)');
         $('#err').css('opacity', '0');
         setTimeout(
             function()

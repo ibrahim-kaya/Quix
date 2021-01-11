@@ -25,9 +25,9 @@
                             <i class="fas fa-check"></i> Çözüldü
                         </div>
                         <div class="flex justify-center h-32 overflow-hidden">
-                            <a href="#"><img src="https://agentmajeur.fr/wp-content/uploads/femme-question-bleue-1.jpg" alt="Quiz Resim" class="w-full"></a>
+                            <a href="{{ route('quiz.show', $quiz->id) }}"><img src="https://agentmajeur.fr/wp-content/uploads/femme-question-bleue-1.jpg" alt="Quiz Resim" class="w-full"></a>
                         </div>
-                        <a href="#" class="p-3 yazi-kisalt" title="{{ $quiz->baslik }}">{{ $quiz->baslik }}</a><br>
+                        <a href="{{ route('quiz.show', $quiz->id) }}" class="p-3 yazi-kisalt" title="{{ $quiz->baslik }}">{{ $quiz->baslik }}</a><br>
                         <span class="p-3 text-xs text-gray-500 absolute bottom-0">Oluşturan: <a href="#" class="text-black">{{ $quiz->getUser->name }}</a>&nbsp;&nbsp;·
                         <span class="text-xs ml-1 text-gray-500">7 May 2021</span>
                         </span>

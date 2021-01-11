@@ -53,6 +53,45 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    /*.secenek + label span {
+        transition: background .2s,
+        transform .2s;
+    }
+
+    .secenek + label span:hover,
+    .secenek + label:hover span{
+        transform: scale(1.2);
+    }
+
+    .secenek:checked + label span {
+        background-color: #3490DC; //bg-blue
+        box-shadow: 0px 0px 0px 2px white inset;
+    }
+
+    .secenek:checked + label{
+        color: #3490DC; //text-blue
+    }*/
+
+    .scale-up {
+        transform: scale(1.02);
+    }
+
+
+    .secenek:checked + label,
+    .secenek:not(:checked) + label{
+        @apply relative inline-block py-3 px-1.5 w-full lg:w-1/2 rounded-md overflow-hidden cursor-pointer transition-all duration-300;
+    }
+    .secenek:not(:checked) + label{
+        @apply bg-gray-100 shadow text-black;
+    }
+    .secenek:checked + label{
+        @apply bg-yellow-600 shadow-md text-white scale-up;
+    }
+    .secenek:not(:checked) + label:hover{
+        @apply shadow-lg;
+    }
+
 }
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';

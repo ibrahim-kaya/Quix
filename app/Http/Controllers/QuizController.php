@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Soru;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
@@ -68,7 +69,7 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

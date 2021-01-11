@@ -30,5 +30,8 @@ Route::group([
 
 });
 
+Route::resource('quiz', \App\Http\Controllers\TestController::class);
 Route::resource('quizler', \App\Http\Controllers\QuizController::class);
 Route::resource('quizlerim', \App\Http\Controllers\EditQuiz::class);
+Route::post('sonuc', '\App\Http\Controllers\TestController@sonuc')->name('sonuc');
+Route::get('sonuc/{id}/{quizid}', '\App\Http\Controllers\TestController@sonucGoster');
