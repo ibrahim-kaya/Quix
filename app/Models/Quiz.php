@@ -12,4 +12,8 @@ class Quiz extends Model
     public function getUser(){
         return $this->hasOne('App\Models\User', 'id','olusturan_id');
     }
+
+    public function sorular(){
+        return $this->hasMany('App\Models\Soru');
+    }
 }

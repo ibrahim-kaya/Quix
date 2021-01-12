@@ -92,6 +92,17 @@
         @apply shadow-lg;
     }
 
+    .secenek-box {
+        @apply relative inline-block py-3 px-1.5 w-full lg:w-1/2 rounded-md overflow-hidden cursor-pointer bg-gray-100 shadow text-black;
+    }
+
+    .secilen {
+        @apply bg-red-500 shadow-md text-white;
+    }
+
+    .dogru {
+        @apply bg-green-500 shadow-md text-white scale-up;
+    }
 }
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';

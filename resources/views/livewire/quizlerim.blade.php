@@ -36,9 +36,9 @@
                                     </span>
                                 </div>
                                 <div>
-                                    <a href="{{ route('quizler.edit', $quiz->id) }}" title="Düzenle"><button class="rounded-md px-2 py-1 ml-1.5 transition duration-300 ease-linear select-none focus:outline-none focus:shadow border border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-600;"><i class="fa fa-file-alt"></i></button></a>
-                                    <a href="{{ route('quizler.edit', $quiz->id) }}" title="Düzenle"><button class="rounded-md px-2 py-1 ml-1.5 transition duration-300 ease-linear select-none focus:outline-none focus:shadow border border-green-500 bg-green-500 text-white hover:bg-green-600;"><i class="fa fa-edit"></i></button></a>
-                                    <button wire:click="quizSil({{ $quiz->id }})" class="rounded-md px-2 py-1 ml-1.5 transition duration-300 ease-linear select-none focus:outline-none focus:shadow border border-red-500 bg-red-500 text-white hover:bg-red-600" title="Sil"><i class="fas fa-trash-alt"></i></button>
+                                    <a href="{{ route('quizler.show', $quiz->uniqueid) }}" title="Görüntüle"><button class="rounded-md px-2 py-1 ml-1.5 transition duration-300 ease-linear select-none focus:outline-none focus:shadow border border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-600;"><i class="fa fa-file-alt"></i></button></a>
+                                    <a href="{{ route('quizler.edit', $quiz->uniqueid) }}" title="Düzenle"><button class="rounded-md px-2 py-1 ml-1.5 transition duration-300 ease-linear select-none focus:outline-none focus:shadow border border-green-500 bg-green-500 text-white hover:bg-green-600;"><i class="fa fa-edit"></i></button></a>
+                                    <button wire:click="quizSil('{{ $quiz->uniqueid }}')" class="rounded-md px-2 py-1 ml-1.5 transition duration-300 ease-linear select-none focus:outline-none focus:shadow border border-red-500 bg-red-500 text-white hover:bg-red-600" title="Sil"><i class="fas fa-trash-alt"></i></button>
                                 </div>
                             </div>
                         </td>
@@ -55,9 +55,9 @@
                     </span>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                            <a href="{{ route('quizler.edit', $quiz->id) }}" class="{{ ($quiz->durum ? 'hidden' : '') }}" title="Görüntüle"><button class="btn btn--orange"><i class="fa fa-file-alt"></i></button></a>
-                            <a href="{{ route('quizler.edit', $quiz->id) }}" class="{{ ($quiz->durum ? 'hidden' : '') }}" title="Düzenle"><button class="btn btn--primary"><i class="fa fa-edit"></i></button></a>
-                            <button wire:click="quizSil({{ $quiz->id }})" class="btn btn--red" title="Sil"><i class="fas fa-trash-alt"></i></button>
+                            <a href="{{ route('quizler.show', $quiz->uniqueid) }}" class="{{ ($quiz->durum ? 'hidden' : '') }}" title="Görüntüle"><button class="btn btn--orange"><i class="fa fa-file-alt"></i></button></a>
+                            <a href="{{ route('quizler.edit', $quiz->uniqueid) }}" class="{{ ($quiz->durum ? 'hidden' : '') }}" title="Düzenle"><button class="btn btn--primary"><i class="fa fa-edit"></i></button></a>
+                            <button wire:click="quizSil('{{ $quiz->uniqueid }}')" class="btn btn--red" title="Sil"><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr>
 

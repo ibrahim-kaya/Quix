@@ -13,7 +13,7 @@ class Quizlerim extends Component
     public $selectedQuiz;
 
     public function quizSil($id){
-        $this->selectedQuiz = $id;
+        $this->selectedQuiz = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
         $this->dispatchBrowserEvent('ModalAc');
     }
 

@@ -53,6 +53,7 @@ class QuizController extends Controller
     public function store(QuizCreateReq $request)
     {
         /*$quiz = new Quiz();
+        $quiz->uniqueid = bin2hex(random_bytes(6));
         $quiz->baslik = $request->baslik;
         $quiz->aciklama = $request->aciklama;
         $quiz->olusturan_id = Auth::user()->id;
@@ -67,9 +68,15 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
+        $id = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
 
+        $data = [
+            'quiz' => Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!')
+        ];
+        return view('quiz.onizleme')->with('data', $data);
     }
 
     /**
@@ -80,6 +87,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
+        $id = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
         $quiz = Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!');
         return view('quiz.duzenle', compact('quiz'));
     }
