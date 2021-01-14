@@ -19,6 +19,7 @@ class QuizMig extends Migration
             $table->integer('olusturan_id');
             $table->string('baslik');
             $table->string('aciklama')->nullable();
+            $table->string('kategori');
             $table->timestamp('expires_at')->nullable();
             $table->integer('durum')->default('0');
             $table->timestamps();

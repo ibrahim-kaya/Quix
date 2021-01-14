@@ -25,7 +25,8 @@ class QuizCreateReq extends FormRequest
     public function rules()
     {
         return [
-            'baslik'=>'required|min:5'
+            'baslik'=>'required|min:5',
+            'kategori'=>'required'
         ];
     }
 

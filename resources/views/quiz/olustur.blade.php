@@ -14,6 +14,16 @@
                 <label class="font-bold mt-4 mb-2">Quiz Açıklaması (Opsiyonel)</label>
                 <textarea name="aciklama" class=" appearance-none w-full border border-gray-200 p-2 h-40 focus:outline-none focus:border-gray-500" placeholder="Bir açıklama yazın...">{{old('aciklama')}}</textarea>
             </div>
+
+            <div class="text-sm flex flex-col">
+                <label class="font-bold mt-4 mb-2">Quiz Kategorisi</label>
+                <select name="kategori" class=" appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500">
+                    <option value="" selected disabled>Bir kategori seçin...</option>
+                    @foreach($kategoriler as $kategori)
+                        <option value="{{ $kategori->link }}">{{ $kategori->isim }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         <button type="submit" class="btn btn--primary mb-5 ml-5">Quiz Oluştur</button>

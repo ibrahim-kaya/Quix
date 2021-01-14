@@ -103,6 +103,16 @@
     .dogru {
         @apply bg-green-500 shadow-md text-white scale-up;
     }
+
+    .kategori {
+        @apply ml-3 mb-3 px-3 py-1.5 text-center rounded-md inline-block;
+        background-size: 60px 60px;
+        background-repeat: no-repeat;
+    }
+
+    .kategori p {
+        @apply text-shadow-lg text-gray-50 font-bold pl-6;
+    }
 }
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';

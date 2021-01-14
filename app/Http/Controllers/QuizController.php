@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Soru;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use App\Models\Quiz;
 use App\Http\Requests\QuizCreateReq;
 use App\Http\Requests\QuizUpdateReq;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class QuizController extends Controller
 {
@@ -20,7 +22,7 @@ class QuizController extends Controller
 
     public function __construct() {
 
-        $this->middleware('auth');
+        //$this->middleware('auth');
         $this->middleware('PostEditPerm', ['only' => ['edit']]);
     }
 
@@ -28,7 +30,8 @@ class QuizController extends Controller
     public function index()
     {
         $data = array(
-            'quizzes' => Quiz::orderBy('id', 'desc')->paginate(12)
+            'quizzes' => Quiz::orderBy('id', 'desc')->paginate(12),
+            'kategoriler' => Kategori::all()
         );
 
         return view('quiz.listele')->with('data', $data);
@@ -41,7 +44,8 @@ class QuizController extends Controller
      */
     public function create()
     {
-        return view('quiz.olustur');
+        $kategoriler = Kategori::all();
+        return view('quiz.olustur', compact('kategoriler'));
     }
 
     /**
@@ -52,14 +56,17 @@ class QuizController extends Controller
      */
     public function store(QuizCreateReq $request)
     {
-        /*$quiz = new Quiz();
+        if(!Kategori::where('link', $request->kategori)->get()->first()) return Redirect::back()->withErrors(['Kategori bulunamadı!']);
+
+        $quiz = new Quiz();
         $quiz->uniqueid = bin2hex(random_bytes(6));
         $quiz->baslik = $request->baslik;
         $quiz->aciklama = $request->aciklama;
+        $quiz->kategori = $request->kategori;
         $quiz->olusturan_id = Auth::user()->id;
-        $quiz->save();*/
+        $quiz->save();
 
-        return redirect()->route('quizler.index')->withSuccess('Quiz başarıyla oluşturuldu!');
+        return redirect()->route('sorular.index', $quiz->uniqueid);
     }
 
     /**
@@ -88,8 +95,11 @@ class QuizController extends Controller
     public function edit($id)
     {
         $id = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
-        $quiz = Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!');
-        return view('quiz.duzenle', compact('quiz'));
+        $data = [
+        'quiz' => Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!'),
+        'kategoriler' => Kategori::all()
+        ];
+        return view('quiz.duzenle')->with('data', $data);
     }
 
     /**

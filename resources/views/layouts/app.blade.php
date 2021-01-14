@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $header.' ~ Quix' }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -38,20 +38,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg relative">
                 @if($errors->any() || session('error'))
-                    <div id="err" class="p-2 text-center transition duration-500 w-full">
+                    <div class="err p-2 text-center transition duration-500 w-full">
                         <div class="inline-flex items-center bg-white leading-none bg-red-200 text-red-600 rounded-full p-2 shadow text-sm">
                             <span class="inline-flex bg-red-600 text-white rounded-full h-6 px-3 justify-center items-center"><i class="fas fa-exclamation"></i></span>
                             <span class="inline-flex px-2">@if($errors->any()) {!! $errors->first() !!} @else {!! session('error') !!} @endif</span>
-                            <span id ="err-kapat" class="inline-flex px-2 cursor-pointer">x</span>
+                            <span class="err-kapat inline-flex px-2 cursor-pointer">x</span>
                         </div>
                     </div>
                 @endif
                 @if(session('success'))
-                    <div id="err" class="p-2 text-center transition duration-300">
+                    <div class="err p-2 text-center transition duration-300">
                         <div class="inline-flex items-center bg-white leading-none bg-green-200 text-green-600 rounded-full p-2 shadow text-teal text-sm">
                             <span class="inline-flex bg-green-600 text-white rounded-full h-6 px-3 justify-center items-center"><i class="fas fa-check"></i></span>
                             <span class="inline-flex px-2">{!! session('success') !!}</span>
-                            <span id ="err-kapat" class="inline-flex px-2 cursor-pointer">x</span>
+                            <span class="err-kapat inline-flex px-2 cursor-pointer">x</span>
                         </div>
                     </div>
                 @endif
@@ -73,14 +73,21 @@
 @livewireScripts
 
 <script>
-    $('#err-kapat').click(function (){
-        $('#err').css('transform', 'scale(0)');
-        $('#err').css('opacity', '0');
+    $('.err-kapat').click(function (){
+        $('.err').css('transform', 'scale(0)');
+        $('.err').css('opacity', '0');
         setTimeout(
             function()
             {
-                $('#err').hide();
+                $('.err').hide();
             }, 300);
+    });
+
+    $('#kategori-btn').click(function (){
+        $('#kat').css("box-shadow", "0px 5px 15px 5px rgba(0,0,0,0.25)");
+        $('#kategoriler').toggle( "slow", function() {
+            if($("#kategoriler").is(":hidden")) $('#kat').css("box-shadow", "none");
+        });
     });
 
     window.addEventListener('ModalAc', event => {

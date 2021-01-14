@@ -8,6 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Cevap extends Model
 {
     protected $table = 'cevaplar';
-
     use HasFactory;
 }

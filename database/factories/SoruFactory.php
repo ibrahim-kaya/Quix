@@ -22,6 +22,7 @@ class SoruFactory extends Factory
      */
     public function definition()
     {
+
         return [
             'quiz_id'=>rand(1,10),
             'soru'=>$this->faker->sentence(rand(3,7)),

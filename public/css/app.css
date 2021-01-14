@@ -32711,6 +32711,78 @@ select{
           animation: bounce 1s infinite;
 }
 
+.text-shadow{
+  text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+}
+
+.text-shadow-sm{
+  text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+}
+
+.text-shadow-md{
+  text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+}
+
+.text-shadow-lg{
+  text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+}
+
+.text-shadow-xl{
+  text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+}
+
+.text-shadow-none{
+  text-shadow: none;
+}
+
+.hover\:text-shadow:hover{
+  text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+}
+
+.hover\:text-shadow-sm:hover{
+  text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+}
+
+.hover\:text-shadow-md:hover{
+  text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+}
+
+.hover\:text-shadow-lg:hover{
+  text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+}
+
+.hover\:text-shadow-xl:hover{
+  text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+}
+
+.hover\:text-shadow-none:hover{
+  text-shadow: none;
+}
+
+.focus\:text-shadow:focus{
+  text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+}
+
+.focus\:text-shadow-sm:focus{
+  text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+}
+
+.focus\:text-shadow-md:focus{
+  text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+}
+
+.focus\:text-shadow-lg:focus{
+  text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+}
+
+.focus\:text-shadow-xl:focus{
+  text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+}
+
+.focus\:text-shadow-none:focus{
+  text-shadow: none;
+}
+
 .btn {
   border-radius: 0.375rem;
 }
@@ -33091,6 +33163,28 @@ select{
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
   transform: scale(1.02);
+}
+
+.kategori {
+  border-radius: 0.375rem;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  text-align: center;
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+}
+
+.kategori p {
+  font-weight: 700;
+  padding-left: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(249, 250, 251, var(--tw-text-opacity));
+  text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
 }
 
 /*!
@@ -71137,6 +71231,78 @@ readers do not read off random characters that represent icons */
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
   }
+
+  .sm\:text-shadow{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .sm\:text-shadow-sm{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .sm\:text-shadow-md{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .sm\:text-shadow-lg{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .sm\:text-shadow-xl{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .sm\:text-shadow-none{
+    text-shadow: none;
+  }
+
+  .sm\:hover\:text-shadow:hover{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .sm\:hover\:text-shadow-sm:hover{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .sm\:hover\:text-shadow-md:hover{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .sm\:hover\:text-shadow-lg:hover{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .sm\:hover\:text-shadow-xl:hover{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .sm\:hover\:text-shadow-none:hover{
+    text-shadow: none;
+  }
+
+  .sm\:focus\:text-shadow:focus{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .sm\:focus\:text-shadow-sm:focus{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .sm\:focus\:text-shadow-md:focus{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .sm\:focus\:text-shadow-lg:focus{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .sm\:focus\:text-shadow-xl:focus{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .sm\:focus\:text-shadow-none:focus{
+    text-shadow: none;
+  }
 }
 
 @media (min-width: 768px){
@@ -103025,6 +103191,78 @@ readers do not read off random characters that represent icons */
   .md\:animate-bounce{
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .md\:text-shadow{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .md\:text-shadow-sm{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .md\:text-shadow-md{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .md\:text-shadow-lg{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .md\:text-shadow-xl{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .md\:text-shadow-none{
+    text-shadow: none;
+  }
+
+  .md\:hover\:text-shadow:hover{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .md\:hover\:text-shadow-sm:hover{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .md\:hover\:text-shadow-md:hover{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .md\:hover\:text-shadow-lg:hover{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .md\:hover\:text-shadow-xl:hover{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .md\:hover\:text-shadow-none:hover{
+    text-shadow: none;
+  }
+
+  .md\:focus\:text-shadow:focus{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .md\:focus\:text-shadow-sm:focus{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .md\:focus\:text-shadow-md:focus{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .md\:focus\:text-shadow-lg:focus{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .md\:focus\:text-shadow-xl:focus{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .md\:focus\:text-shadow-none:focus{
+    text-shadow: none;
   }
 }
 
@@ -134915,6 +135153,78 @@ readers do not read off random characters that represent icons */
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
   }
+
+  .lg\:text-shadow{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .lg\:text-shadow-sm{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .lg\:text-shadow-md{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .lg\:text-shadow-lg{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .lg\:text-shadow-xl{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .lg\:text-shadow-none{
+    text-shadow: none;
+  }
+
+  .lg\:hover\:text-shadow:hover{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .lg\:hover\:text-shadow-sm:hover{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .lg\:hover\:text-shadow-md:hover{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .lg\:hover\:text-shadow-lg:hover{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .lg\:hover\:text-shadow-xl:hover{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .lg\:hover\:text-shadow-none:hover{
+    text-shadow: none;
+  }
+
+  .lg\:focus\:text-shadow:focus{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .lg\:focus\:text-shadow-sm:focus{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .lg\:focus\:text-shadow-md:focus{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .lg\:focus\:text-shadow-lg:focus{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .lg\:focus\:text-shadow-xl:focus{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .lg\:focus\:text-shadow-none:focus{
+    text-shadow: none;
+  }
 }
 
 @media (min-width: 1280px){
@@ -166804,6 +167114,78 @@ readers do not read off random characters that represent icons */
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
   }
+
+  .xl\:text-shadow{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .xl\:text-shadow-sm{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .xl\:text-shadow-md{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .xl\:text-shadow-lg{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .xl\:text-shadow-xl{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .xl\:text-shadow-none{
+    text-shadow: none;
+  }
+
+  .xl\:hover\:text-shadow:hover{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .xl\:hover\:text-shadow-sm:hover{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .xl\:hover\:text-shadow-md:hover{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .xl\:hover\:text-shadow-lg:hover{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .xl\:hover\:text-shadow-xl:hover{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .xl\:hover\:text-shadow-none:hover{
+    text-shadow: none;
+  }
+
+  .xl\:focus\:text-shadow:focus{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .xl\:focus\:text-shadow-sm:focus{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .xl\:focus\:text-shadow-md:focus{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .xl\:focus\:text-shadow-lg:focus{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .xl\:focus\:text-shadow-xl:focus{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .xl\:focus\:text-shadow-none:focus{
+    text-shadow: none;
+  }
 }
 
 @media (min-width: 1536px){
@@ -198692,5 +199074,77 @@ readers do not read off random characters that represent icons */
   .\32xl\:animate-bounce{
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .\32xl\:text-shadow{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .\32xl\:text-shadow-sm{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .\32xl\:text-shadow-md{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .\32xl\:text-shadow-lg{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .\32xl\:text-shadow-xl{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .\32xl\:text-shadow-none{
+    text-shadow: none;
+  }
+
+  .\32xl\:hover\:text-shadow:hover{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .\32xl\:hover\:text-shadow-sm:hover{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .\32xl\:hover\:text-shadow-md:hover{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .\32xl\:hover\:text-shadow-lg:hover{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .\32xl\:hover\:text-shadow-xl:hover{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .\32xl\:hover\:text-shadow-none:hover{
+    text-shadow: none;
+  }
+
+  .\32xl\:focus\:text-shadow:focus{
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .\32xl\:focus\:text-shadow-sm:focus{
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .\32xl\:focus\:text-shadow-md:focus{
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .\32xl\:focus\:text-shadow-lg:focus{
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .\32xl\:focus\:text-shadow-xl:focus{
+    text-shadow: 1px 1px 3px rgb(0 0 0 / 29%), 2px 4px 7px rgb(73 64 125 / 35%);
+  }
+
+  .\32xl\:focus\:text-shadow-none:focus{
+    text-shadow: none;
   }
 }
