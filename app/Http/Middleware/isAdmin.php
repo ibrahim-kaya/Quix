@@ -17,7 +17,7 @@ class isAdmin
     public function handle(Request $request, Closure $next)
     {
         if(auth()->user()->type !== 'admin'){
-            return redirect()->route('dashboard');
+            return redirect()->route('anasayfa');
         }
         return $next($request);
     }

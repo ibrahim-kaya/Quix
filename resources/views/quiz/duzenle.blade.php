@@ -1,6 +1,12 @@
 <x-app-layout>
     <x-slot name="header">Quiz Düzenle</x-slot>
 
+    <div class="flex justify-between border-b bg-gray-200 border-gray-300">
+        <div class="border-r border-green-300"><a href="{{ route('quizlerim.index') }}"><p
+                    class="hover:bg-gray-300 py-3 px-5 font-bold" style="transition: all .4s;"><i
+                        class="fas fa-chevron-left"></i> Geri</p></a></div>
+    </div>
+
     <form method="POST" action="{{ route('quizler.update', $data['quiz']->id) }}">
         @method('PUT')
         @csrf
@@ -48,14 +54,15 @@
 
                 <div class="text-sm flex flex-col">
                     <label class="font-bold mt-4 mb-2">Quiz Gizliliği</label>
-                    <select name="kategori" class=" appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500">
-                        <option value="0">Herkese açık</option>
-                        <option value="1">Liste dışı (Sadece linke tıklayarak ulaşılabilinsin)</option>
+                    <select name="gizlilik" class=" appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500">
+                        <option value="0" @if(!$data['quiz']->gizlilik) selected @endif>Herkese açık</option>
+                        <option value="1" @if($data['quiz']->gizlilik) selected @endif>Liste dışı (Sadece linke tıklayarak ulaşılabilinsin)</option>
                     </select>
                 </div>
         </div>
-
-        <button type="submit" class="btn--primary mb-5 ml-5">Quiz Güncelle</button>
-        <a href="{{ route('sorular.index', $data['quiz']->uniqueid) }}" class="btn--orange mb-5">Soruları Düzenle</a>
+        <div class="ml-5 mb-5">
+        <button type="submit" class="btn--primary mb-1.5">Quiz Güncelle</button>
+        <a href="{{ route('sorular.index', $data['quiz']->uniqueid) }}" class="btn--orange inline-block">Soruları Düzenle</a>
+        </div>
     </form>
 </x-app-layout>

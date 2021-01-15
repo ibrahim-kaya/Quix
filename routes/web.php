@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/anasayfa', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('anasayfa');
 
 Route::group([
     'middleware' => ['auth','isAdmin'],
@@ -38,3 +38,4 @@ Route::get('sonuc/{id}/{uniqueid}', '\App\Http\Controllers\TestController@sonucG
 Route::get('kategori/{ktgid}', '\App\Http\Controllers\KategoriController@show');
 Route::resource('quiz/{uniqueid}/sorular', \App\Http\Controllers\SoruController::class);
 Route::get('quiz/{uniqueid}/sorular/{soruid}/sil', '\App\Http\Controllers\SoruController@soruSil');
+Route::post('yayinlandi', '\App\Http\Controllers\QuizController@yayinlandi')->name('yayinlandi');

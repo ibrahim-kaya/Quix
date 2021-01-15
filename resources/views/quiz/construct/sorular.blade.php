@@ -1,20 +1,23 @@
 <x-app-layout>
     <x-slot name="header">Quiz Soruları</x-slot>
+    <?php
+        $gzlilik = ['Herkese Açık', 'Liste Dışı (Sadece link ile ulaşılabilinir)'];
+    ?>
 
     <div id="hatavar" class="hidden"><?php
         if($errors->any() && ($errors->has('cevap1') || $errors->has('cevap2') || $errors->has('cevap3') || $errors->has('cevap4') || $errors->has('dogru'))) echo '1';
         ?></div>
 
     <div class="flex justify-between border-b bg-gray-200 border-gray-300">
-        <div class="border-r border-green-300"><a href="{{ route('quizlerim.index') }}"><p
+        <div class="border-r border-green-300"><a href="{{ route('quizler.edit', $quiz->uniqueid) }}"><p
                     class="hover:bg-gray-300 py-3 px-5 font-bold" style="transition: all .4s;"><i
                         class="fas fa-chevron-left"></i> Geri</p></a></div>
         <div class="flex items-center">
             <div>
-                <button id="yeni" class="btn btn--primary mr-2"><i class="fas fa-plus"></i> Yeni Soru</button>
+                <button id="yeni" class="btn btn--primary mr-2 text-sm sm:text-base"><i class="fas fa-plus"></i> Yeni Soru</button>
             </div>
             <div>
-                <button class="btn btn--primary mr-2"><i class="fas fa-check-circle"></i> Bitir</button>
+                <button id="bitir" class="btn btn--primary mr-2 text-sm sm:text-base"><i class="fas fa-check-circle"></i> Bitir</button>
             </div>
         </div>
     </div>
@@ -148,6 +151,34 @@
             $('#btn_onay').attr("form", "soru_ekle");
             $('#btn_onay').toggleClass().addClass('btn--primary');
             $('#btn_onay').html('Ekle');
+            modal_ac();
+        });
+
+        $('#bitir').click(function () {
+
+            const html = `
+                          <form id="bitir_form" method="post" action="{{ route('yayinlandi') }}">
+                          <input type="hidden" name="quiz" value="{{ $quiz->uniqueid }}">
+                          @csrf
+                          <div class="py-10 sm:px-5">
+                            <p class="text-lg">Soru eklemeyi bitirip Quiz'ini yayınlamak istiyor musun?</p>
+                            <p class="text-gray-600">Quiz'in yayınlandıktan sonra onu tekrar düzenleyemezsin.</p>
+                            <p class="text-gray-600">Taslak olarak bırakmak istiyorsan sayfayı kapatıp çıkabilirsin. Soruların otomatik kaydediliyor.</p>
+                            <br>
+                            <hr>
+                            <br>
+                            <p>Quizin <b>{{ $gzlilik[$quiz->gizlilik] }}</b> olarak <b class="text-green-600">{{ $quiz->sorular->count() }} soru</b> ile birlikte yayınlanacak.</p>
+                          </div>
+                          </form>
+                        `;
+
+            $('#modal_baslik').html('Bitir ve Yayınla');
+            $('#modal_icerik').html(html);
+            $('#link').attr("href", "#");
+            $('#btn_onay').attr("type", "submit");
+            $('#btn_onay').attr("form", "bitir_form");
+            $('#btn_onay').toggleClass().addClass('btn--primary');
+            $('#btn_onay').html('Yayınla Gitsin');
             modal_ac();
         });
 

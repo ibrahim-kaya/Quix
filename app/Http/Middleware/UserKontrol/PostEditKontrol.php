@@ -20,7 +20,7 @@ class PostEditKontrol
     {
         $postid = $request->route()->parameters()['quizler'];
         if(auth()->user()->type !== 'admin' && Quiz::find($postid)->olusturan_id != auth()->user()->id){
-            return redirect()->route('dashboard')->withErrors('Bu Quiz\'i sen oluşturmamışsın!');
+            return redirect()->route('anasayfa')->withErrors('Bu Quiz\'i sen oluşturmamışsın!');
         }
         return $next($request);
     }
