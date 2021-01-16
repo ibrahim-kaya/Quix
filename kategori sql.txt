@@ -1,0 +1,65 @@
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'cografya',
+ 'Coğrafya',
+ 'bg-blue-400',
+ 'https://i.pinimg.com/originals/06/d2/cf/06d2cfa5cd7f8fbe8e94ef5d75496a75.png');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'tarih',
+ 'Tarih',
+ 'bg-yellow-600',
+ 'https://cdn2.iconfinder.com/data/icons/buildings-73/64/castle-fantasy-history-tower-Building-512.png');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'yemek',
+ 'Yemek',
+ 'bg-green-500',
+ 'https://icons-for-free.com/iconfiles/png/512/meal-1320568026248944827.png');
+  INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'moda',
+ 'Moda',
+ 'bg-red-300',
+ '/storage/img/3050253.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'burclar',
+ 'Burçlar',
+ 'bg-indigo-400',
+ '/storage/img/2647288.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'bilim',
+ 'Bilim',
+ 'bg-green-400',
+ '/storage/img/3081530.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'teknoloji',
+ 'Teknoloji',
+ 'bg-blue-300',
+ '/storage/img/538807.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'genel-kultur',
+ 'Genel Kültür',
+ 'bg-red-400',
+ '/storage/img/3100752.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'yabanci-dil',
+ 'Yabancı Dil',
+ 'bg-blue-400',
+ '/storage/img/1973739.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'egitim',
+ 'Eğitim',
+ 'bg-blue-400',
+ '/storage/img/2987867.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'oyunlar',
+ 'Oyunlar',
+ 'bg-blue-500',
+ '/storage/img/2949874.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'dizi-film',
+ 'Dizi-Film',
+ 'bg-red-500',
+ '/storage/img/3163478.svg');
+ INSERT INTO `kategoriler` (`link`, `isim`, `renk`, `icon`) VALUES(
+ 'sanat',
+ 'Sanat',
+ 'bg-red-500',
+ '/storage/img/2970785.svg');

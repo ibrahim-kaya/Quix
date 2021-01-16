@@ -15,6 +15,7 @@
     <h1 class="text-2xl font-bold text-blue-500 my-20">Geçici Landing Page</h1>
     <a href="{{ route('login') }}"><button class="btn--primary my-2">Giriş Yap</button></a>
     <a href="{{ route('register') }}" ><button class="btn--primary my-2">Kayıt Ol</button></a>
+    <a href="{{ route('quizler.index') }}" class="mt-5"><button class="btn--orange my-2">Quizleri Göreyim</button></a>
 </div>
 </body>
 </html>

@@ -80,7 +80,7 @@
 
     .secenek:checked + label,
     .secenek:not(:checked) + label{
-        @apply relative inline-block py-3 px-1.5 w-full lg:w-1/2 rounded-md overflow-hidden cursor-pointer transition-all duration-300;
+        @apply relative inline-block py-3 px-1.5 mb-1 w-full lg:w-1/2 rounded-md overflow-hidden cursor-pointer transition-all duration-300;
     }
     .secenek:not(:checked) + label{
         @apply bg-gray-100 shadow text-black;
@@ -93,7 +93,7 @@
     }
 
     .secenek-box {
-        @apply relative inline-block py-3 px-1.5 w-full lg:w-1/2 rounded-md overflow-hidden cursor-pointer bg-gray-100 shadow text-black;
+        @apply relative inline-block py-3 px-1.5 mb-1 w-full lg:w-1/2 rounded-md overflow-hidden cursor-pointer bg-gray-100 shadow text-black;
     }
 
     .secilen {

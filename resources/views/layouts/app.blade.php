@@ -21,12 +21,12 @@
 <body class="font-sans antialiased">
 <x-jet-banner />
 
-<div class="min-h-screen bg-gray-100">
+<div class="min-h-screen bg-gray-100" style="background-image: url(/storage/img/login-bg.png); background-attachment: fixed;">
     @livewire('navigation-menu')
 
     <!-- Page Heading -->
-    <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <header class="shadow" style="background-color:rgba(255, 255, 255, 0.65);">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ $header }}
             </h2>

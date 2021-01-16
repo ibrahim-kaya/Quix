@@ -8,14 +8,15 @@ use App\Models\Soru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class TestController extends Controller
 {
 
-    public function __construct() {
+    /*public function __construct() {
 
         $this->middleware('auth', ['except' => ['sonucGoster']]);
-    }
+    }*/
 
 
     /**
@@ -39,30 +40,34 @@ class TestController extends Controller
             $q = Soru::find($item['soru']);
             if($q)
             {
-                if($q->quiz_id != $request->__id) return Redirect::back()->withErrors(['Çakal mısın olm sen??']);
+                if($q->quiz_id != $request->__id) return Redirect::back()->withErrors(['Bazı uyuşmazlıklar söz konusu! Tekrar dene.']);
             }
             else{
-                return Redirect::back()->withErrors(['Çakal mısın olm sen??']);
+                return Redirect::back()->withErrors(['Bazı uyuşmazlıklar söz konusu! Tekrar dene.']);
             }
         }
+
+        if(Auth::check()) $uid = Auth::user()->id;
+        else $uid = Session::getId();
+
 
         foreach ($request->cevaplar as $item) {
 
             //--[ Eğer önceden çözülmüşse direk sonuç sayfasına atar ]--
 
-            if(Cevap::where([['soru_id', $item['soru']], ['userid', Auth::user()->id]])->first()) return Redirect::route('sonuc_Goster', [Auth::user()->id, $request->__id]);
+            if(Cevap::where([['soru_id', $item['soru']], ['userid', $uid]])->first()) return Redirect::route('sonuc_Goster', [Auth::user()->id, $request->__id]);
 
             /*--[ Eğer önceden çözülmüşse eski cevapları yenileriyle değiştirir ]--
 
             $cevap = Cevap::where([['soru_id', $item['soru']], ['userid', Auth::user()->id]])->first();
             if(!$cevap)*/ $cevap = new Cevap();
-            $cevap->userid = Auth::user()->id;
+            $cevap->userid = $uid;
             $cevap->soru_id = $item['soru'];
             $cevap->cevap = $item['cevap'];
             $cevap->save();
         }
 
-        return Redirect::route('sonuc_Goster', [Auth::user()->id, $request->_id]);
+        return Redirect::route('sonuc_Goster', [$uid, $request->_id]);
     }
 
     public function sonucGoster($id, $quizid)
@@ -112,8 +117,11 @@ class TestController extends Controller
     {
         $id = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
 
-        if(Cevap::where('userid', Auth::user()->id)->get()->where('soru_id', Quiz::find($id)->sorular->first()->id)->count()){
-            return Redirect::route('sonuc_Goster', [Auth::user()->id, $id]);
+        if(Auth::check()) $uid = Auth::user()->id;
+        else $uid = Session::getId();
+
+        if(Cevap::where('userid', $uid)->get()->where('soru_id', Quiz::find($id)->sorular->first()->id)->count()){
+            return Redirect::route('sonuc_Goster', [$uid, $id]);
         }
 
         $data = [

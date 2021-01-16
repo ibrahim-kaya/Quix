@@ -14,5 +14,6 @@ return [
     */
 
     'failed' => 'Girilmiş olan kullanıcı verileri sistemdekiler ile eşleşmemektedir.',
-    'throttle' => 'Çok fazla oturum açma girişiminde bulundunuz. Lütfen :seconds saniye sonra tekrar deneyiz.',
+    'password' => 'Yanlış şifre girdin!',
+    'throttle' => 'Çok fazla oturum açma girişiminde bulundun. Lütfen :seconds saniye sonra tekrar dene.',
 ];

@@ -11,6 +11,7 @@ use App\Http\Requests\QuizCreateReq;
 use App\Http\Requests\QuizUpdateReq;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class QuizController extends Controller
 {
@@ -80,8 +81,12 @@ class QuizController extends Controller
     {
         $id = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
 
+        if(Auth::check()) $uid = Auth::user()->id;
+        else $uid = Session::getId();
+
         $data = [
-            'quiz' => Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!')
+            'quiz' => Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!'),
+            'userid' => $uid
         ];
         return view('quiz.onizleme')->with('data', $data);
     }
