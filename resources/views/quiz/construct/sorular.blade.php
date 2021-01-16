@@ -5,7 +5,7 @@
     ?>
 
     <div id="hatavar" class="hidden"><?php
-        if($errors->any() && ($errors->has('cevap1') || $errors->has('cevap2') || $errors->has('cevap3') || $errors->has('cevap4') || $errors->has('dogru'))) echo '1';
+        if($errors->any() && ($errors->has('cevap1') || $errors->has('cevap2') || $errors->has('cevap3') || $errors->has('cevap4') || $errors->has('dogru_cevap') || $errors->has('resim'))) echo '1';
         ?></div>
 
     <div class="flex justify-between border-b bg-gray-200 border-gray-300">
@@ -125,18 +125,18 @@
                               <div class="w-full lg:w-1/2 lg:pr-5">
                             <label><b>A şıkkı:</b></label><br>
                               <input type="text" name="cevap1" class="rounded-md w-full" value="{{ old('cevap1') }}">
-                              <div class="mb-4"><input id="a" type="radio" name="dogru_cevap" value="cevap1"><label for="a" class="text-sm">Doğru Şık</label></div>
+                              <div class="mb-4"><input id="a" type="radio" name="dogru_cevap" value="cevap1 @if(old('dogru_cevap') === "cevap1") checked @endif"><label for="a" class="text-sm">Doğru Şık</label></div>
                             <label><b>B şıkkı:</b></label><br>
                               <input type="text" name="cevap2" class="rounded-md w-full" value="{{ old('cevap2') }}">
-                              <div class="mb-4"><input id="b" type="radio" name="dogru_cevap" value="cevap2"><label for="b" class="text-sm">Doğru Şık</label></div>
+                              <div class="mb-4"><input id="b" type="radio" name="dogru_cevap" value="cevap2 @if(old('dogru_cevap') === "cevap2") checked @endif"><label for="b" class="text-sm">Doğru Şık</label></div>
                             </div>
                             <div class="w-full lg:w-1/2">
                             <label><b>C şıkkı:</b></label><br>
                               <input type="text" name="cevap3" class="rounded-md w-full" value="{{ old('cevap3') }}">
-                              <div class="mb-4"><input id="c" type="radio" name="dogru_cevap" value="cevap3"><label for="c" class="text-sm">Doğru Şık</label></div>
+                              <div class="mb-4"><input id="c" type="radio" name="dogru_cevap" value="cevap3 @if(old('dogru_cevap') === "cevap3") checked @endif"><label for="c" class="text-sm">Doğru Şık</label></div>
                             <label><b>D şıkkı:</b></label><br>
                                <input type="text" name="cevap4" class="rounded-md w-full" value="{{ old('cevap4') }}">
-                               <div class="mb-4"><input id="d" type="radio" name="dogru_cevap" value="cevap4"><label for="d" class="text-sm">Doğru Şık</label></div>
+                               <div class="mb-4"><input id="d" type="radio" name="dogru_cevap" value="cevap4" @if(old('dogru_cevap') === "cevap4") checked @endif><label for="d" class="text-sm">Doğru Şık</label></div>
                             </div>
                             </div>
                             </form>

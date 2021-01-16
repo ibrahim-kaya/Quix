@@ -6,6 +6,8 @@ use App\Models\Quiz;
 use App\Models\Soru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class SoruController extends Controller
 {
@@ -78,7 +80,17 @@ class SoruController extends Controller
         if($request->hasFile('resim')){
             $fileName = bin2hex(random_bytes(6)).'.'.$request->resim->getClientOriginalextension();
             $fileDir = '/uploads/'.$fileName;
-            $request->resim->move(public_path('uploads'), $fileName);
+            $request->resim->move(public_path('uploads').'/tmp', $fileName);
+
+            $width = 400; // your max width
+            $height = 256; // your max height
+            $img = Image::make(public_path('uploads').'/tmp/'.$fileName);
+            $img->height() > $img->width() ? $width=null : $height=null;
+            $img->resize($width, $height, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save(public_path('uploads').'/'.$fileName);
+            File::delete(public_path('uploads').'/tmp/'.$fileName);
             $request->merge(['resim'=>$fileDir]);
         }
         Quiz::find($id)->sorular()->create($request->post());
