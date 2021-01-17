@@ -12,14 +12,45 @@
                         <p class="inline">Kategoriler</p>
                     </div>
                     <div id="kategoriler" class="mt-5 hidden">
-                        @foreach($data['kategoriler'] as $kategori)
-                            <a href="/kategori/{{ $kategori->link }}">
-                                <div class="kategori {{ $kategori->renk }}"
-                                     style="background-image: url({{ $kategori->icon }});">
-                                    <p>{{ $kategori->isim }}</p>
-                                </div>
-                            </a>
-                        @endforeach
+
+                        <div class="hidden lg:block">
+                            @foreach($data['kategoriler'] as $kategori)
+                                    <a href="/kategori/{{ $kategori->link }}">
+                                        <div class="kategori {{ $kategori->renk }}inline-block"
+                                             style="background-image: url({{ $kategori->icon }});">
+                                            <p>{{ $kategori->isim }}</p>
+                                        </div>
+                                    </a>
+                            @endforeach
+                        </div>
+
+                        <div class="flex lg:hidden">
+                            <div class="">
+                                @foreach($data['kategoriler'] as $kategori)
+                                    @if ($loop->index % 2 == 0)
+                                        <a href="/kategori/{{ $kategori->link }}">
+                                            <div class="kategori {{ $kategori->renk }}"
+                                                 style="background-image: url({{ $kategori->icon }});">
+                                                <p>{{ $kategori->isim }}</p>
+                                            </div>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
+                            <div class="">
+                                @foreach($data['kategoriler'] as $kategori)
+                                    @if ($loop->index % 2 != 0)
+                                        <a href="/kategori/{{ $kategori->link }}">
+                                            <div class="kategori {{ $kategori->renk }}"
+                                                 style="background-image: url({{ $kategori->icon }});">
+                                                <p>{{ $kategori->isim }}</p>
+                                            </div>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

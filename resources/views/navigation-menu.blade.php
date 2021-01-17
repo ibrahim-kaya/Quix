@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('anasayfa') }}" :active="request()->routeIs('anasayfa')">
-                        {{ __('Dashboard') }}
+                        Anasayfa
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('quizler.index') }}" :active="request()->routeIs('quizler.index')">
                         Quizler
@@ -120,11 +120,11 @@
 
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Manage Account') }}
+                                    Hesap Yönetimi
                                 </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
+                                    Profil
                                 </x-jet-dropdown-link>
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -142,7 +142,7 @@
                                     <x-jet-dropdown-link href="{{ route('logout') }}"
                                                          onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                        {{ __('Logout') }}
+                                        Çıkış Yap
                                     </x-jet-dropdown-link>
                                 </form>
                             </x-slot>
@@ -150,7 +150,7 @@
                     </div>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Giriş Yap</a>
-                <p class="mx-2">·</p>
+                    <p class="mx-2">·</p>
                     <a href="{{ route('register') }}" class="text-sm text-gray-700 underline">Kayıt Ol</a>
                 @endif
             </div>
@@ -176,7 +176,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('anasayfa') }}" :active="request()->routeIs('anasayfa')">
-                {{ __('Dashboard') }}
+                Anasayfa
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('quizler.index') }}"
                                        :active="request()->routeIs('quizler.index')">
@@ -203,9 +203,14 @@
 
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
+                    <x-jet-responsive-nav-link href="{{ route('quizlerim.index') }}"
+                                               :active="request()->routeIs('quizlerim.index')">
+                        <i class="fas fa-file-alt"></i> Quizlerim
+                    </x-jet-responsive-nav-link>
+
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                                                :active="request()->routeIs('profile.show')">
-                        {{ __('Profile') }}
+                        <i class="fas fa-user"></i> Profil
                     </x-jet-responsive-nav-link>
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -222,7 +227,7 @@
                         <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                            {{ __('Logout') }}
+                            <i class="fas fa-sign-out-alt"></i> Çıkış Yap
                         </x-jet-responsive-nav-link>
                     </form>
 
@@ -264,27 +269,34 @@
             <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="mt-3 space-y-1">
                     <x-jet-responsive-nav-link href="{{ route('register') }}">
-                        Kayıt Ol
+                        <i class="fas fa-user-plus"></i> Kayıt Ol
                     </x-jet-responsive-nav-link>
 
-                    <button @click="open_l = ! open_l">Giriş Yap</button>
-                    <div id="asdsa" :class="{'block': open_l, 'hidden': ! open_l}">
+                    <x-jet-responsive-nav-link href="javascript:void(0)" @click="open_l = ! open_l">
+                        <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                    </x-jet-responsive-nav-link>
+                    <div :class="{'block': open_l, 'hidden': ! open_l}" class="p-2 bg-gray-100">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <input type="hidden" name="url" value="{{ url()->current() }}">
-                        <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                     :value="old('email')"
-                                     required autofocus/>
-                        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                                     autocomplete="current-password"/>
-                        <x-jet-checkbox id="remember_me" name="remember" class="hidden" checked/>
-                        <div class="flex justify-end items-center">
-
-                            <x-jet-button class="mr-2">
-                                {{ __('Login') }}
-                            </x-jet-button>
-                            </form>
-                        </div>
+                            <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email"
+                                         :value="old('email')" placeholder="E-Posta"
+                                         required autofocus/>
+                            <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password"
+                                         placeholder="Şifre" required
+                                         autocomplete="current-password"/>
+                            <x-jet-checkbox id="remember_me" name="remember" class="hidden" checked/>
+                            <div class="flex flex-wrap justify-end items-center">
+                                <x-jet-button class="mr-2 mt-2">
+                                    Girişimi Yap
+                                </x-jet-button>
+                                <div class="w-full"></div>
+                                <a class="underline text-sm text-gray-600 hover:text-gray-900 mr-2 my-1"
+                                   href="{{ route('password.request') }}">
+                                    Şifreyi unuttuk iyi mi
+                                </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -17,14 +17,45 @@
                         <p class="inline">Kategoriler</p>
                     </div>
                     <div id="kategoriler" class="mt-5 hidden">
-                        <?php $__currentLoopData = $data['kategoriler']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a href="/kategori/<?php echo e($kategori->link); ?>">
-                                <div class="kategori <?php echo e($kategori->renk); ?>"
-                                     style="background-image: url(<?php echo e($kategori->icon); ?>);">
-                                    <p><?php echo e($kategori->isim); ?></p>
-                                </div>
-                            </a>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                        <div class="hidden lg:block">
+                            <?php $__currentLoopData = $data['kategoriler']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <a href="/kategori/<?php echo e($kategori->link); ?>">
+                                        <div class="kategori <?php echo e($kategori->renk); ?>inline-block"
+                                             style="background-image: url(<?php echo e($kategori->icon); ?>);">
+                                            <p><?php echo e($kategori->isim); ?></p>
+                                        </div>
+                                    </a>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+
+                        <div class="flex lg:hidden">
+                            <div class="">
+                                <?php $__currentLoopData = $data['kategoriler']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($loop->index % 2 == 0): ?>
+                                        <a href="/kategori/<?php echo e($kategori->link); ?>">
+                                            <div class="kategori <?php echo e($kategori->renk); ?>"
+                                                 style="background-image: url(<?php echo e($kategori->icon); ?>);">
+                                                <p><?php echo e($kategori->isim); ?></p>
+                                            </div>
+                                        </a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </div>
+                            <div class="">
+                                <?php $__currentLoopData = $data['kategoriler']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($loop->index % 2 != 0): ?>
+                                        <a href="/kategori/<?php echo e($kategori->link); ?>">
+                                            <div class="kategori <?php echo e($kategori->renk); ?>"
+                                                 style="background-image: url(<?php echo e($kategori->icon); ?>);">
+                                                <p><?php echo e($kategori->isim); ?></p>
+                                            </div>
+                                        </a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

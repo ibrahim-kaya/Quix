@@ -14,8 +14,15 @@ class LoginResponse implements LoginResponseContract
      */
     public function toResponse($request)
     {
-        return $request->wantsJson()
+        if($request->wantsJson()) return response()->json(['two_factor' => false]);
+        else
+        {
+           if($request->url) return redirect($request->url);
+           else return redirect()->intended(config('fortify.home'));
+        }
+
+        /*return $request->wantsJson()
                     ? response()->json(['two_factor' => false])
-                    : redirect()->intended(config('fortify.home'));
+                    : redirect()->intended(config('fortify.home'));*/
     }
 }

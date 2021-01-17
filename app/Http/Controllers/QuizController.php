@@ -136,6 +136,8 @@ class QuizController extends Controller
     {
         $id = Quiz::where('uniqueid', $request->quiz)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
         $quiz = Quiz::find($id);
+        $quiz->durum = 1;
+        $quiz->save();
         return view('quiz.construct.yayinlandi', compact('quiz'));
     }
 }

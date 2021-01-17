@@ -124,7 +124,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <?php if(Route::has('password.request')): ?>
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 bg-gray-100" href="<?php echo e(route('password.request')); ?>">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="<?php echo e(route('password.request')); ?>">
                         Şifreyi unuttuk iyi mi
                     </a>
                 <?php endif; ?>

@@ -26,13 +26,13 @@
 
                 @foreach($data['quizzes'] as $quiz)
                     <tr>
-                        <td class="relative px-5 py-5 pb-12 lg:pb-5 border-b border-gray-300 md:border-gray-200 text-sm quiz-table-baslik cursor-pointer max-w-sm shadow md:shadow-none">
+                        <td class="relative px-5 pt-7 pb-12 lg:pb-5 border-b border-gray-300 md:border-gray-200 text-sm quiz-table-baslik cursor-pointer max-w-sm shadow md:shadow-none">
                             <p class="text-gray-900 whitespace-no-wrap text-lg">{{ $quiz->baslik }}</p>
                             <div class="quiz-table-info flex items-center justify-between mt-6 py-1 px-3 bg-gray-50 absolute bottom-0 right-0 w-full rounded-t-md border-t border-gray-300">
                                 <div>
                                     <span class="relative inline-block px-3 py-0.5 font-semibold text-green-900 leading-tight mx-1.5">
-                                        <span class="absolute inset-0 bg-yellow-500 opacity-50 rounded-full"></span>
-                                        <span class="relative text-xs"><i class="fas fa-pencil-ruler"></i> Taslak</span>
+                                        <span class="absolute inset-0 bg-{{ ($quiz->durum ? 'green' : 'yellow') }}-500 opacity-50 rounded-full"></span>
+                                        <span class="relative text-xs"><i class="fas {{ ($quiz->durum ? 'fa-check' : 'fa-pencil-ruler') }}"></i> {{ $data['durumtxt'][$quiz->durum] }}  </span>
                                     </span>
                                 </div>
                                 <div>
@@ -55,9 +55,11 @@
                     </span>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                            <a href="{{ route('quizler.show', $quiz->uniqueid) }}" class="{{ ($quiz->durum ? 'hidden' : '') }}" title="Görüntüle"><button class="btn btn--orange"><i class="fa fa-file-alt"></i></button></a>
-                            <a href="{{ route('quizler.edit', $quiz->uniqueid) }}" class="{{ ($quiz->durum ? 'hidden' : '') }}" title="Düzenle"><button class="btn btn--primary"><i class="fa fa-edit"></i></button></a>
-                            <button wire:click="quizSil('{{ $quiz->uniqueid }}')" class="btn btn--red" title="Sil"><i class="fas fa-trash-alt"></i></button>
+                            <div class="flex justify-end">
+                            <a href="{{ route('quizler.show', $quiz->uniqueid) }}" class="ml-1" title="Görüntüle"><button class="btn btn--orange"><i class="fa fa-file-alt"></i></button></a>
+                            <a href="{{ route('quizler.edit', $quiz->uniqueid) }}" class="ml-1 {{ ($quiz->durum ? 'hidden' : '') }}" title="Düzenle"><button class="btn btn--primary"><i class="fa fa-edit"></i></button></a>
+                            <button wire:click="quizSil('{{ $quiz->uniqueid }}')" class="ml-1 btn btn--red" title="Sil"><i class="fas fa-trash-alt"></i></button>
+                            </div>
                         </td>
                     </tr>
 

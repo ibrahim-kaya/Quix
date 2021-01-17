@@ -2,40 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebd37b91-669c-4145-a730-47cec373c8c7" name="Default Changelist" comment="Build 0.55&#10;- Quiz ekleme ve yayınlama fonksiyonları tamamlandı.">
-      <change afterPath="$PROJECT_DIR$/public/uploads/0a2c1da58831.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/14df49b5af2a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/65dbcc73cea5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/87156e318832.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/9cd16c8bbc3b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/a7c94c6f7ad4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/e5008626c8a0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/9cd16c8bbc3b.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LaravelQuiz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaravelQuiz.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LaravelQuiz.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SoruController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SoruController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/packages.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/packages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/cache/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/cache/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/04c9b0e6cc2a.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/07d5dc51bfb0.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/0dd9fc269669.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/1200ec25ccbc.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/190e87f4d284.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/b666b466aeb1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/bf564dc9f978.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/e4fc4b958dbd.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/quiz/construct/sorular.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/construct/sorular.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/d23890fae494b63efadbad6d4ebb1f7607e91500.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/d23890fae494b63efadbad6d4ebb1f7607e91500.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/quizlerim.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/quizlerim.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/quiz/listele.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/listele.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/8c/6a/8c6a773d2c4f9fb2643fdea474c912c2531fb1cb" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/8c/6a/8c6a773d2c4f9fb2643fdea474c912c2531fb1cb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/8c/ca/8ccad5cd50334c685768a8a494350756851670b0" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/8c/ca/8ccad5cd50334c685768a8a494350756851670b0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/3e8ec8b1c437f1eb5805f1b459953660e82defa6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3e8ec8b1c437f1eb5805f1b459953660e82defa6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/76daf467694fb8ad60d9420a8e6132935c7295b3.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/76daf467694fb8ad60d9420a8e6132935c7295b3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/97eb64e80a110bac78082b736f5023339ebcd761.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/97eb64e80a110bac78082b736f5023339ebcd761.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/a03b13076ed1fc6b4ab67e8af2574010a29dbc14.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/a03b13076ed1fc6b4ab67e8af2574010a29dbc14.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/laravel/fortify/src/Http/Responses/LoginResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/fortify/src/Http/Responses/LoginResponse.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,8 +210,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.127.0.0.1:8000" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="JavaScript Debug.127.0.0.1:8000" />
         <item itemvalue="npm.watch" />
       </list>
     </recent_temporary>
@@ -259,7 +241,8 @@
       <workItem from="1610734282383" duration="160000" />
       <workItem from="1610735110601" duration="4832000" />
       <workItem from="1610793274367" duration="10494000" />
-      <workItem from="1610805682455" duration="4882000" />
+      <workItem from="1610805682455" duration="6125000" />
+      <workItem from="1610837959212" duration="6513000" />
     </task>
     <task id="LOCAL-00001" summary="Ilk Surum">
       <created>1610040544293</created>
@@ -352,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610806915519</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Build 0.6&#10;- Resim yüklerken optimize etme fonksiyonu eklendi.">
+      <created>1610811143186</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1610811143186</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +381,8 @@
     <MESSAGE value="Build 0.5&#10;- Quiz ekleme ve yayınlama fonksiyonları tamamlandı." />
     <MESSAGE value="Build 0.55&#10;- Quiz ekleme ve yayınlama fonksiyonları tamamlandı." />
     <MESSAGE value="- Giriş, Kayıt sayfası ve URL'ler Türkçeleştirildi.&#10;- Arkaplan resmi eklendi." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Giriş, Kayıt sayfası ve URL'ler Türkçeleştirildi.&#10;- Arkaplan resmi eklendi." />
+    <MESSAGE value="Build 0.6&#10;- Resim yüklerken optimize etme fonksiyonu eklendi." />
+    <option name="LAST_COMMIT_MESSAGE" value="Build 0.6&#10;- Resim yüklerken optimize etme fonksiyonu eklendi." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
