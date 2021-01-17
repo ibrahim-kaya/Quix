@@ -21,7 +21,7 @@
                         <div class="hidden lg:block">
                             <?php $__currentLoopData = $data['kategoriler']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <a href="/kategori/<?php echo e($kategori->link); ?>">
-                                        <div class="kategori <?php echo e($kategori->renk); ?>inline-block"
+                                        <div class="kategori <?php echo e($kategori->renk); ?> inline-block"
                                              style="background-image: url(<?php echo e($kategori->icon); ?>);">
                                             <p><?php echo e($kategori->isim); ?></p>
                                         </div>

@@ -3,7 +3,7 @@
 
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="/storage/img/logo.png" alt="QuiX" class="w-24 mt-5">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -49,14 +49,18 @@
             @endif
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    Zaten kayıtlı mısın? Giriş yap
-                </a>
-
                 <x-jet-button class="ml-4">
                     Beni Üye Eyle
                 </x-jet-button>
             </div>
         </form>
+        <br>
+        <hr>
+        <br>
+        <div class="text-center pb-5">
+            <a href="{{ route('login') }}"><x-jet-button class="ml-4">
+                    Benim zaten hesabım var
+        </x-jet-button></a>
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>

@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('anasayfa') }}">
-                        <x-jet-application-mark class="block h-9 w-auto"/>
+                    <a href="/">
+                        <img src="/storage/img/logo.png" alt="QuiX" class="block h-9 w-auto"/>
                     </a>
                 </div>
 

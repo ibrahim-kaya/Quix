@@ -29,17 +29,12 @@
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700 leading-5">
-                    <?php echo __('Showing'); ?>
-
                     <span class="font-medium"><?php echo e($paginator->firstItem()); ?></span>
-                    <?php echo __('to'); ?>
-
+                    ile
                     <span class="font-medium"><?php echo e($paginator->lastItem()); ?></span>
-                    <?php echo __('of'); ?>
-
+                    arası Quiz gösteriliyor. Toplam
                     <span class="font-medium"><?php echo e($paginator->total()); ?></span>
-                    <?php echo __('results'); ?>
-
+                    Quiz bulundu.
                 </p>
             </div>
 

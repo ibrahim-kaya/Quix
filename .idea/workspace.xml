@@ -2,22 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebd37b91-669c-4145-a730-47cec373c8c7" name="Default Changelist" comment="Build 0.55&#10;- Quiz ekleme ve yayınlama fonksiyonları tamamlandı.">
-      <change afterPath="$PROJECT_DIR$/LaravelQuiz.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/quizlerim.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/quizlerim.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaravelQuiz.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/quiz/listele.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/listele.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/quiz/sonuc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/quiz/sonuc.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/8c/6a/8c6a773d2c4f9fb2643fdea474c912c2531fb1cb" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/8c/6a/8c6a773d2c4f9fb2643fdea474c912c2531fb1cb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/8c/ca/8ccad5cd50334c685768a8a494350756851670b0" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/8c/ca/8ccad5cd50334c685768a8a494350756851670b0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/14c9d1196cf4c781d9aff981154794221df09edc.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/14c9d1196cf4c781d9aff981154794221df09edc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/2121cf1891fe805d0f589ed53ac5824ec2f22729.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/2121cf1891fe805d0f589ed53ac5824ec2f22729.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/3e8ec8b1c437f1eb5805f1b459953660e82defa6.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3e8ec8b1c437f1eb5805f1b459953660e82defa6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/4de1e1e81a593bbc06ab77ed81fa1f4f866c69c7.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/4de1e1e81a593bbc06ab77ed81fa1f4f866c69c7.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/76daf467694fb8ad60d9420a8e6132935c7295b3.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/76daf467694fb8ad60d9420a8e6132935c7295b3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/97eb64e80a110bac78082b736f5023339ebcd761.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/97eb64e80a110bac78082b736f5023339ebcd761.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/views/a03b13076ed1fc6b4ab67e8af2574010a29dbc14.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/a03b13076ed1fc6b4ab67e8af2574010a29dbc14.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/fortify/src/Http/Responses/LoginResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/fortify/src/Http/Responses/LoginResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/aa206089bb4ba0db1c5b705ff7eca66ef9072cf4.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/aa206089bb4ba0db1c5b705ff7eca66ef9072cf4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/b32be2a8016fbaa061f4d38f4edd53fe87465c7c.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b32be2a8016fbaa061f4d38f4edd53fe87465c7c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/ed12f47b513ccb842e4f56d14536b0e56ce5a566.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/ed12f47b513ccb842e4f56d14536b0e56ce5a566.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Pagination/resources/views/tailwind.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Pagination/resources/views/tailwind.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +248,9 @@
       <workItem from="1610735110601" duration="4832000" />
       <workItem from="1610793274367" duration="10494000" />
       <workItem from="1610805682455" duration="6125000" />
-      <workItem from="1610837959212" duration="6982000" />
+      <workItem from="1610837959212" duration="8368000" />
+      <workItem from="1610897388248" duration="1190000" />
+      <workItem from="1610907069708" duration="8159000" />
     </task>
     <task id="LOCAL-00001" summary="Ilk Surum">
       <created>1610040544293</created>
@@ -349,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610844901302</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Build 6.1&#10;- Mobil üst navigasyon menüsü düzenlendi. Giriş fonksiyonu düzeltildi.&#10;- Navigasyon menüsü ve bazı kısımlar Türkçeye çevrildi.&#10;- Kategoriler mobil görünümde düzene sokuldu.">
+      <created>1610845042161</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1610845042161</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -49,6 +49,10 @@
                 <p id="msg" class="text-green-600" style="transition: all .4s; transform: scaleY(0)">Link
                     Kopyalandı!</p>
             @endif
+            @if (!\Illuminate\Support\Facades\Auth::check())
+                <br>
+                <p class="text-sm text-gray-600">Sen de kendi Quiz'ini oluşturmak için hemen <a href="{{ route('register') }}" class="text-blue-500">kaydol!</a></p>
+            @endif
         </div>
         <hr>
         <br>

@@ -33,19 +33,19 @@
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?> 
 
-<div class="min-h-screen bg-gray-100" style="background-image: url(/storage/img/login-bg.png); background-attachment: fixed;">
+<div class="min-h-screen bg-gray-100 bg-fixed" style="background-image: url(/storage/img/login-bg.png);">
     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('navigation-menu')->html();
-} elseif ($_instance->childHasBeenRendered('xd2izjA')) {
-    $componentId = $_instance->getRenderedChildComponentId('xd2izjA');
-    $componentTag = $_instance->getRenderedChildComponentTagName('xd2izjA');
+} elseif ($_instance->childHasBeenRendered('n4ve4Yl')) {
+    $componentId = $_instance->getRenderedChildComponentId('n4ve4Yl');
+    $componentTag = $_instance->getRenderedChildComponentTagName('n4ve4Yl');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('xd2izjA');
+    $_instance->preserveRenderedChild('n4ve4Yl');
 } else {
     $response = \Livewire\Livewire::mount('navigation-menu');
     $html = $response->html();
-    $_instance->logRenderedChild('xd2izjA', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('n4ve4Yl', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

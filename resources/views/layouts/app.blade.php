@@ -21,7 +21,7 @@
 <body class="font-sans antialiased">
 <x-jet-banner />
 
-<div class="min-h-screen bg-gray-100" style="background-image: url(/storage/img/login-bg.png); background-attachment: fixed;">
+<div class="min-h-screen bg-gray-100 bg-fixed" style="background-image: url(/storage/img/login-bg.png);">
     @livewire('navigation-menu')
 
     <!-- Page Heading -->

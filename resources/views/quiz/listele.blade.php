@@ -16,7 +16,7 @@
                         <div class="hidden lg:block">
                             @foreach($data['kategoriler'] as $kategori)
                                     <a href="/kategori/{{ $kategori->link }}">
-                                        <div class="kategori {{ $kategori->renk }}inline-block"
+                                        <div class="kategori {{ $kategori->renk }} inline-block"
                                              style="background-image: url({{ $kategori->icon }});">
                                             <p>{{ $kategori->isim }}</p>
                                         </div>
