@@ -5,12 +5,15 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['submit' => 'updateProfileInformation']); ?>
      <?php $__env->slot('title'); ?> 
-        <?php echo e(__('Profile Information')); ?>
+        <?php echo e(__('Profil Bilgileri')); ?>
 
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('description'); ?> 
-        <?php echo e(__('Update your account\'s profile information and email address.')); ?>
+        <?php echo e(__('Hesap bilgilerini ve e-posta adresini güncelleyebilirsin.')); ?>
+
+        <br>
+        <?php echo e(__('Kullanıcı adını değiştiremezsin.')); ?>
 
      <?php $__env->endSlot(); ?>
 
@@ -32,11 +35,11 @@
                             " />
 
                  <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'photo','value' => ''.e(__('Photo')).'']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'photo','value' => ''.e(__('Profil Resmi')).'']]); ?>
 <?php $component->withName('jet-label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['for' => 'photo','value' => ''.e(__('Photo')).'']); ?>
+<?php $component->withAttributes(['for' => 'photo','value' => ''.e(__('Profil Resmi')).'']); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -62,7 +65,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['class' => 'mt-2 mr-2','type' => 'button','x-on:click.prevent' => '$refs.photo.click()']); ?>
-                    <?php echo e(__('Select A New Photo')); ?>
+                    <?php echo e(__('Yeni Bir Resim Seç')); ?>
 
                  <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
@@ -78,7 +81,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['type' => 'button','class' => 'mt-2','wire:click' => 'deleteProfilePhoto']); ?>
-                        <?php echo e(__('Remove Photo')); ?>
+                        <?php echo e(__('Resmi Kaldır')); ?>
 
                      <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
@@ -106,11 +109,11 @@
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
              <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'name','value' => ''.e(__('Name')).'']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'name','value' => ''.e(__('Kullanıcı Adı')).'']]); ?>
 <?php $component->withName('jet-label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['for' => 'name','value' => ''.e(__('Name')).'']); ?>
+<?php $component->withAttributes(['for' => 'name','value' => ''.e(__('Kullanıcı Adı')).'']); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -118,11 +121,11 @@
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?> 
              <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.input','data' => ['id' => 'name','type' => 'text','class' => 'mt-1 block w-full','wire:model.defer' => 'state.name','autocomplete' => 'name']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.input','data' => ['id' => 'name','type' => 'text','class' => 'mt-1 block bg-gray-100 w-full','wire:model.defer' => 'state.name','autocomplete' => 'name','disabled' => true]]); ?>
 <?php $component->withName('jet-input'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['id' => 'name','type' => 'text','class' => 'mt-1 block w-full','wire:model.defer' => 'state.name','autocomplete' => 'name']); ?>
+<?php $component->withAttributes(['id' => 'name','type' => 'text','class' => 'mt-1 block bg-gray-100 w-full','wire:model.defer' => 'state.name','autocomplete' => 'name','disabled' => true]); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -130,11 +133,11 @@
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?> 
              <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.input-error','data' => ['for' => 'username','class' => 'mt-2']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.input-error','data' => ['for' => 'name','class' => 'mt-2']]); ?>
 <?php $component->withName('jet-input-error'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['for' => 'username','class' => 'mt-2']); ?>
+<?php $component->withAttributes(['for' => 'name','class' => 'mt-2']); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -146,11 +149,11 @@
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
              <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'email','value' => ''.e(__('Email')).'']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'email','value' => ''.e(__('E-Posta')).'']]); ?>
 <?php $component->withName('jet-label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['for' => 'email','value' => ''.e(__('Email')).'']); ?>
+<?php $component->withAttributes(['for' => 'email','value' => ''.e(__('E-Posta')).'']); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -191,7 +194,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['class' => 'mr-3','on' => 'saved']); ?>
-            <?php echo e(__('Saved.')); ?>
+            <?php echo e(__('Kaydedildi.')); ?>
 
          <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
@@ -206,7 +209,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['wire:loading.attr' => 'disabled','wire:target' => 'photo']); ?>
-            <?php echo e(__('Save')); ?>
+            <?php echo e(__('Kaydet')); ?>
 
          <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>

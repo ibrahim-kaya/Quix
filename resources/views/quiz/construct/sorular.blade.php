@@ -5,7 +5,7 @@
     ?>
 
     <div id="hatavar" class="hidden"><?php
-        if($errors->any() && ($errors->has('cevap1') || $errors->has('cevap2') || $errors->has('cevap3') || $errors->has('cevap4') || $errors->has('dogru_cevap') || $errors->has('resim'))) echo '1';
+        if($errors->any() && ($errors->has('soru') || $errors->has('cevap1') || $errors->has('cevap2') || $errors->has('cevap3') || $errors->has('cevap4') || $errors->has('dogru_cevap') || $errors->has('resim'))) echo '1';
         ?></div>
 
     <div class="flex justify-between border-b bg-gray-200 border-gray-300">
@@ -29,6 +29,7 @@
 
     <div class="p-5 lg:p-10">
         <p class="text-2xl">Quiz: <b>{{ $quiz->baslik }}</b></p>
+        <p>{!! nl2br(e($quiz->aciklama)) !!}</p>
         <br>
 
         <input hidden name="__id" value="{{ $quiz->id }}">
@@ -63,6 +64,11 @@
             <br>@if($loop->index < $loop->count - 1)
                 <hr><br> @endif
         @endforeach
+
+        <div class="text-sm flex flex-col items-center bg-gray-100 rounded-md pb-5 border border-green-200">
+            <label class="font-bold mt-5 mb-2">Quiz Önizlemesi</label>
+            @include('quiz.templates.quiz-box', ['quiz' => $quiz , 'kategori' => $kategori->isim, 'userid' => \Illuminate\Support\Facades\Auth::user()->id])
+        </div>
     </div>
 
 
@@ -84,8 +90,8 @@
                 </div>
                 <hr>
                 @if($errors->any() || session('error'))
-                    <div class="err p-2 text-center transition duration-500 w-full">
-                        <div class="inline-flex items-center bg-white leading-none bg-red-200 text-red-600 rounded-full p-2 shadow text-sm">
+                    <div class="err p-2 text-center transition duration-500 absolute mx-auto inset-x-0 -mt-1 w-max">
+                        <div class="flex justify-between items-center bg-white leading-none bg-red-200 text-red-600 rounded-full p-2 shadow text-sm">
                             <span class="inline-flex bg-red-600 text-white rounded-full h-6 px-3 justify-center items-center"><i class="fas fa-exclamation"></i></span>
                             <span class="inline-flex px-2">@if($errors->any()) {!! $errors->first() !!} @else {!! session('error') !!} @endif</span>
                             <span class="err-kapat inline-flex px-2 cursor-pointer">x</span>
@@ -118,24 +124,24 @@
                              <form id="soru_ekle" method="post" action="" class="flex flex-col" enctype="multipart/form-data">
                              @csrf
                             <label><b>Soruyu yaz:</b></label><br>
-                             <textarea class="rounded-md mb-4" name="soru"> {{ old('soru') }}</textarea><br><br>
+                             <textarea class="rounded-md mb-4" name="soru"> {{ old('soru') }}</textarea><br>
                              <label><b>Soru resmi (opsiyonel):</b></label><br>
                               <input type="file" class="rounded-md w-full" name="resim">
                               <div class="flex flex-col lg:flex-row mt-4">
                               <div class="w-full lg:w-1/2 lg:pr-5">
                             <label><b>A şıkkı:</b></label><br>
-                              <input type="text" name="cevap1" class="rounded-md w-full" value="{{ old('cevap1') }}">
+                              <input type="text" name="cevap1" class="rounded-md w-full p-1" value="{{ old('cevap1') }}">
                               <div class="mb-4"><input id="a" type="radio" name="dogru_cevap" value="cevap1 @if(old('dogru_cevap') === "cevap1") checked @endif"><label for="a" class="text-sm">Doğru Şık</label></div>
                             <label><b>B şıkkı:</b></label><br>
-                              <input type="text" name="cevap2" class="rounded-md w-full" value="{{ old('cevap2') }}">
+                              <input type="text" name="cevap2" class="rounded-md w-full p-1" value="{{ old('cevap2') }}">
                               <div class="mb-4"><input id="b" type="radio" name="dogru_cevap" value="cevap2 @if(old('dogru_cevap') === "cevap2") checked @endif"><label for="b" class="text-sm">Doğru Şık</label></div>
                             </div>
                             <div class="w-full lg:w-1/2">
                             <label><b>C şıkkı:</b></label><br>
-                              <input type="text" name="cevap3" class="rounded-md w-full" value="{{ old('cevap3') }}">
+                              <input type="text" name="cevap3" class="rounded-md w-full p-1" value="{{ old('cevap3') }}">
                               <div class="mb-4"><input id="c" type="radio" name="dogru_cevap" value="cevap3 @if(old('dogru_cevap') === "cevap3") checked @endif"><label for="c" class="text-sm">Doğru Şık</label></div>
                             <label><b>D şıkkı:</b></label><br>
-                               <input type="text" name="cevap4" class="rounded-md w-full" value="{{ old('cevap4') }}">
+                               <input type="text" name="cevap4" class="rounded-md w-full p-1" value="{{ old('cevap4') }}">
                                <div class="mb-4"><input id="d" type="radio" name="dogru_cevap" value="cevap4" @if(old('dogru_cevap') === "cevap4") checked @endif><label for="d" class="text-sm">Doğru Şık</label></div>
                             </div>
                             </div>

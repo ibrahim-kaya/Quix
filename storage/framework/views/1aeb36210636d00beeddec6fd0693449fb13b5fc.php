@@ -5,23 +5,23 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['submit' => 'updatePassword']); ?>
      <?php $__env->slot('title'); ?> 
-        <?php echo e(__('Update Password')); ?>
+        <?php echo e(__('Şifreyi Güncelle')); ?>
 
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('description'); ?> 
-        <?php echo e(__('Ensure your account is using a long, random password to stay secure.')); ?>
+        <?php echo e(__('Güvenli bir şifre kullandığından emin ol. Sonra hesabı hacılamasınlar.')); ?>
 
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('form'); ?> 
         <div class="col-span-6 sm:col-span-4">
              <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'current_password','value' => ''.e(__('Current Password')).'']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'current_password','value' => ''.e(__('Mevcut Şifre')).'']]); ?>
 <?php $component->withName('jet-label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['for' => 'current_password','value' => ''.e(__('Current Password')).'']); ?>
+<?php $component->withAttributes(['for' => 'current_password','value' => ''.e(__('Mevcut Şifre')).'']); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -56,11 +56,11 @@
 
         <div class="col-span-6 sm:col-span-4">
              <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'password','value' => ''.e(__('New Password')).'']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'password','value' => ''.e(__('Yeni Şifre')).'']]); ?>
 <?php $component->withName('jet-label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['for' => 'password','value' => ''.e(__('New Password')).'']); ?>
+<?php $component->withAttributes(['for' => 'password','value' => ''.e(__('Yeni Şifre')).'']); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -95,11 +95,11 @@
 
         <div class="col-span-6 sm:col-span-4">
              <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'password_confirmation','value' => ''.e(__('Confirm Password')).'']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.label','data' => ['for' => 'password_confirmation','value' => ''.e(__('Yeni Şifre (bi daha)')).'']]); ?>
 <?php $component->withName('jet-label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['for' => 'password_confirmation','value' => ''.e(__('Confirm Password')).'']); ?>
+<?php $component->withAttributes(['for' => 'password_confirmation','value' => ''.e(__('Yeni Şifre (bi daha)')).'']); ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -140,7 +140,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['class' => 'mr-3','on' => 'saved']); ?>
-            <?php echo e(__('Saved.')); ?>
+            <?php echo e(__('Kaydedildi.')); ?>
 
          <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
@@ -155,7 +155,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
-            <?php echo e(__('Save')); ?>
+            <?php echo e(__('Kaydet')); ?>
 
          <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>

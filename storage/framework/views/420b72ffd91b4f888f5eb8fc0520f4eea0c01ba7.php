@@ -5,18 +5,18 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('title'); ?> 
-        <?php echo e(__('Browser Sessions')); ?>
+        <?php echo e(__('Tarayıcı Oturumları')); ?>
 
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('description'); ?> 
-        <?php echo e(__('Manage and logout your active sessions on other browsers and devices.')); ?>
+        <?php echo e(__('Hesabının başka nerelerde açık olduğunu gör.')); ?>
 
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('content'); ?> 
         <div class="max-w-xl text-sm text-gray-600">
-            <?php echo e(__('If necessary, you may logout of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.')); ?>
+            <?php echo e(__('Eğer bi sıkıntı olduğunu düşünüyorsan diğer tüm tarayıcılardaki oturumları sonlandırabilirsin. Ha ben hesabın çalındığından da şüpheleniyorum diyorsan şifreni güncellemeni öneriririz.')); ?>
 
         </div>
 
@@ -48,9 +48,9 @@
                                     <?php echo e($session->ip_address); ?>,
 
                                     <?php if($session->is_current_device): ?>
-                                        <span class="text-green-500 font-semibold"><?php echo e(__('This device')); ?></span>
+                                        <span class="text-green-500 font-semibold"><?php echo e(__('Bu cihaz')); ?></span>
                                     <?php else: ?>
-                                        <?php echo e(__('Last active')); ?> <?php echo e($session->last_active); ?>
+                                        <?php echo e(__('Son aktivite')); ?> <?php echo e($session->last_active); ?>
 
                                     <?php endif; ?>
                                 </div>
@@ -68,7 +68,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['wire:click' => 'confirmLogout','wire:loading.attr' => 'disabled']); ?>
-                <?php echo e(__('Logout Other Browser Sessions')); ?>
+                <?php echo e(__('Öteki Tarayıcılardan Çıkış Yap')); ?>
 
              <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
@@ -83,7 +83,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['class' => 'ml-3','on' => 'loggedOut']); ?>
-                <?php echo e(__('Done.')); ?>
+                <?php echo e(__('Tamamdır.')); ?>
 
              <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>

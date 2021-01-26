@@ -22,11 +22,19 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:users', 'regex:/(^([a-zA-Z_]+)(\d+)?$)/u'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-        ],['terms' => 'Kullanım Şartlarını kabul etmeden şurdan şuraya salmam.'])->validate();
+        ],[
+            'terms.required' => 'Kullanım Şartlarını kabul etmeden şurdan şuraya salmam.',
+            'name.regex' => 'Kullanıcı Adında Türkçe harf, özel karakter (boşluk, nokta vs.) kullanamazsın. Yalnızca alt tire (_).'
+        ], [
+            'name' => 'Kullanıcı adı',
+            'email' => 'E-Posta',
+            'password' => 'Şifre',
+            'terms' => 'Koşullar ve Şartlar',
+        ])->validate();
 
         return User::create([
             'name' => $input['name'],

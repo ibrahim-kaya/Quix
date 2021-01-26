@@ -7,6 +7,14 @@
         @apply rounded-md px-4 py-2 transition duration-300 ease-linear select-none focus:outline-none focus:shadow;
     }
 
+    .btn-sm {
+        @apply rounded-md px-2 py-1 transition duration-300 ease-linear select-none focus:outline-none focus:shadow;
+    }
+
+    .btn--green {
+        @apply border border-green-500 bg-green-500 text-white hover:bg-green-600;
+    }
+
     .btn--primary {
         @apply btn;
         @apply border border-green-500 bg-green-500 text-white hover:bg-green-600;

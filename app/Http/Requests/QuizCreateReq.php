@@ -26,14 +26,16 @@ class QuizCreateReq extends FormRequest
     {
         return [
             'baslik'=>'required|min:5',
-            'kategori'=>'required'
+            'kategori'=>'required',
+            'gorsel' => 'image|nullable|max:1024|mimes:jpg,jpeg,png',
         ];
     }
 
     public function attributes()
     {
         return [
-            'baslik'=>'Quiz başlığı'
+            'baslik'=>'Quiz başlığı',
+            'gorsel' => 'Quiz resmi'
         ];
     }
 }

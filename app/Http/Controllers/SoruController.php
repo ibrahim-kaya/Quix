@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Quiz;
 use App\Models\Soru;
 use Illuminate\Http\Request;
@@ -24,14 +25,17 @@ class SoruController extends Controller
     {
         $id = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
         if(Auth::user()->type != "admin" && Quiz::find($id)->getUser->id != Auth::user()->id) return redirect()->route('quizlerim.index')->withErrors('Bu Quiz\'i sen oluşturmamışsın!');
+        if(Auth::user()->type != "admin" && Quiz::find($id)->durum) return redirect()->back()->withErrors('Bu Quiz yayınlanmış! Yayınlanmış Quiz\'lerin soruları değiştirilemez.');
         $quiz = Quiz::whereId($id)->with('sorular')->first();
-        return view('quiz.construct.sorular', compact('quiz'));
+        $kategori = Kategori::where('link', $quiz->kategori)->get()->first();
+        return view('quiz.construct.sorular', compact('quiz', 'kategori'));
     }
 
     public function soruSil($uniqueid, $soruid)
     {
         $id = Quiz::where('uniqueid', $uniqueid)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
         if(Auth::user()->type != "admin" && Quiz::find($id)->getUser->id != Auth::user()->id) return redirect()->route('sorular.index', $uniqueid)->withErrors('Bu Quiz\'i sen oluşturmamışsın!');
+        if(Auth::user()->type != "admin" && Quiz::find($id)->durum) return redirect()->back()->withErrors('Bu Quiz yayınlanmış! Yayınlanmış Quiz\'lerin soruları değiştirilemez.');
         if(Soru::find($soruid)->quiz_id != $id) return redirect()->route('sorular.index', $uniqueid)->withErrors('Bazı uyuşmazlıklar söz konusu. Tekrar denemeyi dene.');
         Soru::destroy($soruid);
         return redirect()->route('sorular.index', $uniqueid)->withSuccess('Sildik gitti!');

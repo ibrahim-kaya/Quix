@@ -37,7 +37,6 @@ class Quizlerim extends Component
     }
 
     public function modalAc() {
-        view('livewire.modal-wire');
         $this->dispatchBrowserEvent('ModalAc');
     }
 

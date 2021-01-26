@@ -13,6 +13,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            screens: {
+                'ip5': {'raw': '(max-width: 321px)'},
+            },
         },
     },
 

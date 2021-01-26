@@ -57,7 +57,7 @@
                         <td class="px-5 py-5 border-b border-gray-200 text-sm">
                             <div class="flex justify-end">
                             <a href="{{ route('quizler.show', $quiz->uniqueid) }}" class="ml-1" title="Görüntüle"><button class="btn btn--orange"><i class="fa fa-file-alt"></i></button></a>
-                            <a href="{{ route('quizler.edit', $quiz->uniqueid) }}" class="ml-1 {{ ($quiz->durum ? 'hidden' : '') }}" title="Düzenle"><button class="btn btn--primary"><i class="fa fa-edit"></i></button></a>
+                            <a href="{{ route('quizler.edit', $quiz->uniqueid) }}" class="ml-1  " title="Düzenle"><button class="btn btn--primary"><i class="fa fa-edit"></i></button></a>
                             <button wire:click="quizSil('{{ $quiz->uniqueid }}')" class="ml-1 btn btn--red" title="Sil"><i class="fas fa-trash-alt"></i></button>
                             </div>
                         </td>

@@ -1,0 +1,63 @@
+.tabs {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.tabs .tab-baslik {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.tabs .tab-baslik > div {
+    width: calc(100% / 4);
+    text-align: center;
+    color: #888;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    outline: none;
+    flex-grow: 1;
+    transition: all .4s;
+}
+
+.tabs .tab-baslik > div:hover {
+    opacity: 50%;
+}
+
+.tabs .tab-baslik > div > i {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.tabs .tab-baslik > div.aktif {
+    color:#00acee;
+}
+.tabs .tab-indicator {
+    position:relative;
+    width:calc(100% / 2);
+    height:5px;
+    background:#00acee;
+    left:0px;
+    border-radius:5px;
+    transition:all 500ms ease-in-out;
+}
+
+.tabs .tab-bg {
+    position:absolute;
+    z-index: 0;
+    width:calc(100% / 2);
+    height:57px;
+    background-color: rgba(0, 172, 238, .15);
+    left:0px;
+    top:5px;
+    border-radius:5px;
+    transition:all 500ms ease-in-out;
+}
+
+.posts {
+    transition: all .4s;
+    overflow: hidden;
+}

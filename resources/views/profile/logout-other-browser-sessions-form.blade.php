@@ -1,15 +1,15 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Browser Sessions') }}
+        {{ __('Tarayıcı Oturumları') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Manage and logout your active sessions on other browsers and devices.') }}
+        {{ __('Hesabının başka nerelerde açık olduğunu gör.') }}
     </x-slot>
 
     <x-slot name="content">
         <div class="max-w-xl text-sm text-gray-600">
-            {{ __('If necessary, you may logout of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.') }}
+            {{ __('Eğer bi sıkıntı olduğunu düşünüyorsan diğer tüm tarayıcılardaki oturumları sonlandırabilirsin. Ha ben hesabın çalındığından da şüpheleniyorum diyorsan şifreni güncellemeni öneriririz.') }}
         </div>
 
         @if (count($this->sessions) > 0)
@@ -39,9 +39,9 @@
                                     {{ $session->ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-green-500 font-semibold">{{ __('This device') }}</span>
+                                        <span class="text-green-500 font-semibold">{{ __('Bu cihaz') }}</span>
                                     @else
-                                        {{ __('Last active') }} {{ $session->last_active }}
+                                        {{ __('Son aktivite') }} {{ $session->last_active }}
                                     @endif
                                 </div>
                             </div>
@@ -53,11 +53,11 @@
 
         <div class="flex items-center mt-5">
             <x-jet-button wire:click="confirmLogout" wire:loading.attr="disabled">
-                {{ __('Logout Other Browser Sessions') }}
+                {{ __('Öteki Tarayıcılardan Çıkış Yap') }}
             </x-jet-button>
 
             <x-jet-action-message class="ml-3" on="loggedOut">
-                {{ __('Done.') }}
+                {{ __('Tamamdır.') }}
             </x-jet-action-message>
         </div>
 

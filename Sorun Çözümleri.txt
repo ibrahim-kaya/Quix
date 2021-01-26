@@ -1,0 +1,3 @@
+-Storage klasörünü farklı bir dizine belirleme:
+config > filesystems.php klasöründe disks > public içine:
+'root' => base_path().'/../public_html/storage',

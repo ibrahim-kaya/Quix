@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cevap;
+use App\Models\Puan;
 use App\Models\Quiz;
 use App\Models\Soru;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class TestController extends Controller
 {
@@ -34,6 +37,10 @@ class TestController extends Controller
             'required' => 'Boş bıraktığın sorular var! Tüm soruları cevaplaman gerek.'
         ]);
 
+        if(!Auth::check()){
+            if(is_null($request->isim)) return Redirect::route('quizler.show', $request->_id)->withErrors(['İsmini göremedik. Tekrar dene.']);
+        }
+
         $sorular = Soru::where('quiz_id', $request->__id);
 
         foreach ($request->cevaplar as $item) {
@@ -48,14 +55,14 @@ class TestController extends Controller
         }
 
         if(Auth::check()) $uid = Auth::user()->id;
-        else $uid = Session::getId();
+        else $uid = 'u'.Session::getId();
 
 
         foreach ($request->cevaplar as $item) {
 
             //--[ Eğer önceden çözülmüşse direk sonuç sayfasına atar ]--
 
-            if(Cevap::where([['soru_id', $item['soru']], ['userid', $uid]])->first()) return Redirect::route('sonuc_Goster', [Auth::user()->id, $request->__id]);
+            if(Cevap::where([['soru_id', $item['soru']], ['userid', $uid]])->first()) return Redirect::route('sonuc_Goster', [Auth::user()->id, $request->_id]);
 
             /*--[ Eğer önceden çözülmüşse eski cevapları yenileriyle değiştirir ]--
 
@@ -64,6 +71,7 @@ class TestController extends Controller
             $cevap->userid = $uid;
             $cevap->soru_id = $item['soru'];
             $cevap->cevap = $item['cevap'];
+            if(isset($request->isim)) $cevap->isim = $request->isim;
             $cevap->save();
         }
 
@@ -78,12 +86,29 @@ class TestController extends Controller
             'userid' => $id,
             'quiz' => Quiz::find($quizid) ?? abort(404, 'Quiz bulunamadı!'),
             'sorular' => Quiz::find($quizid)->sorular,
-            'cevaplar' => Cevap::where('userid', $id)->get()
+            'cevaplar' => Cevap::where('userid', $id)->get(),
+            'puan' => Puan::where([['userid', $id], ['quizid', $quizid]])->get(),
+            'ortpuan' => Puan::avg('puan')
         ];
+
+        $usr = [];
+        if(!is_numeric($id))
+        {
+            $usr['id'] = $id;
+            $usr['name'] = $data['cevaplar']->first()->isim;
+            $usr['profile_photo_url'] = 'https://ui-avatars.com/api/?name='.$data['cevaplar']->first()->isim.'&color=7F9CF5&background=EBF4FF';
+            $arr = ['user' => (object) $usr];
+            $res = array_merge($data, $arr);
+        }
+        else
+        {
+            $arr = ['user' => User::find($id)];
+            $res = array_merge($data, $arr);
+        }
 
         if(!$data['cevaplar']->where('soru_id', $data['sorular']->first()->id)->count()) return Redirect::route('quizler.index')->withErrors('Sonuç bulunamadı!');
 
-        return view('quiz.sonuc')->with('data', $data);
+        return view('quiz.sonuc')->with('data', $res);
     }
 
     /**
@@ -113,20 +138,30 @@ class TestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $uniqueid)
     {
-        $id = Quiz::where('uniqueid', $id)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
+        if(!Auth::check())
+        {
+            $validated = $request->validate([
+                'isim' => 'required',
+            ], [], [
+                'isim' => 'İsim',
+            ]);
+        }
+
+        $id = Quiz::where('uniqueid', $uniqueid)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
 
         if(Auth::check()) $uid = Auth::user()->id;
-        else $uid = Session::getId();
+        else $uid = 'u'.Session::getId();
 
         if(Cevap::where('userid', $uid)->get()->where('soru_id', Quiz::find($id)->sorular->first()->id)->count()){
-            return Redirect::route('sonuc_Goster', [$uid, $id]);
+            return Redirect::route('sonuc_Goster', [$uid, $uniqueid]);
         }
 
         $data = [
             'quiz' => Quiz::find($id) ?? abort(404, 'Quiz bulunamadı!'),
-            'sorular' => Quiz::find($id)->sorular
+            'sorular' => Quiz::find($id)->sorular,
+            'isim' => $request->isim
         ];
         return view('quiz.quiz')->with('data', $data);
     }

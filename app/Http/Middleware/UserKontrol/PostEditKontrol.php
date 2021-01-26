@@ -6,6 +6,7 @@ use App\Models\Quiz;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostEditKontrol
 {
@@ -19,7 +20,7 @@ class PostEditKontrol
     public function handle(Request $request, Closure $next)
     {
         $postid = $request->route()->parameters()['quizler'];
-        if(auth()->user()->type !== 'admin' && Quiz::find($postid)->olusturan_id != auth()->user()->id){
+        if(Auth::user()->type !== 'admin' && Quiz::where('uniqueid', $postid)->get()->first()->olusturan_id != Auth::user()->id){
             return redirect()->route('anasayfa')->withErrors('Bu Quiz\'i sen oluşturmamışsın!');
         }
         return $next($request);

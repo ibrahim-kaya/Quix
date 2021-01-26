@@ -19,4 +19,9 @@ class Soru extends Model
         'dogru_cevap',
         'resim'
     ];
+
+    public function sQuiz()
+    {
+        return $this->belongsTo('App\Models\Quiz');
+    }
 }

@@ -7,12 +7,14 @@
      <?php $__env->slot('header'); ?> Quizler <?php $__env->endSlot(); ?>
 
     <div class="p-5 lg:p-10">
-        <p class="text-2xl">Quiz: <?php echo e($data['quiz']->baslik); ?></p>
+        <p class="text-2xl">Quiz: <b><?php echo e($data['quiz']->baslik); ?></b></p>
+        <p class="mt-2"><?php echo nl2br(e($data['quiz']->aciklama)); ?></p>
         <br>
         <form method="post" action="<?php echo e(route('sonuc')); ?>">
             <?php echo csrf_field(); ?>
             <input hidden name="__id" value="<?php echo e($data['quiz']->id); ?>">
             <input hidden name="_id" value="<?php echo e($data['quiz']->uniqueid); ?>">
+            <input hidden name="isim" value="<?php echo e($data['isim']); ?>">
             <?php $__currentLoopData = $data['sorular']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $soru): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <h1 class="text-lg pb-3 font-bold"><?php echo e($loop->index+1); ?>) <?php echo e($soru->soru); ?></h1>
                 <input type="hidden" name="cevaplar[<?php echo e($loop->index); ?>][soru]" value="<?php echo e($soru->id); ?>">

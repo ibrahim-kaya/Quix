@@ -1,5 +1,8 @@
 <nav x-data="{ open: false, open_l: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
+<?php
+$d = new \App\Helper\Duello();
+?>
+<!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
@@ -177,10 +180,36 @@
                                     </button>
                                 </span>
                                 <?php endif; ?>
+                                <?php if(\Illuminate\Support\Facades\Auth::check() && $d->GetDuelloIstekleri(\Illuminate\Support\Facades\Auth::user()->id)->count()): ?>
+                                    <div
+                                        class="rounded-full bg-red-600 w-3 h-3 border-2 border-white absolute top-0 right-0"></div> <?php endif; ?>
                              <?php $__env->endSlot(); ?>
 
                              <?php $__env->slot('content'); ?> 
-                                <!-- Account Management -->
+                                 <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.dropdown-link','data' => ['href' => ''.e(route('profil', Auth::user()->name)).'']]); ?>
+<?php $component->withName('jet-dropdown-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['href' => ''.e(route('profil', Auth::user()->name)).'']); ?>
+                                    <div class="flex border-b border-gray-100 pb-2">
+                                        <div class="flex items-center"><img class="inline w-10 h-10 rounded-full"
+                                                                            src="<?php echo e(Auth::user()->profile_photo_url); ?>"
+                                                                            alt="<?php echo e(Auth::user()->name); ?>"/>
+                                        </div>
+                                        <div class="ml-2">
+                                            <div><?php echo e(Auth::user()->name); ?></div>
+                                            <div class="text-xs text-gray-400">Profile Git</div>
+                                        </div>
+                                    </div>
+                                 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?> 
+
+                                <!-- Quizler -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     Quizler
                                 </div>
@@ -191,7 +220,26 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['href' => ''.e(route('quizlerim.index')).'']); ?>
-                                    Quizlerim
+                                    Quizlerimi Yönet
+                                 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?> 
+
+                                 <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.dropdown-link','data' => ['href' => ''.e(route('duellolarim')).'']]); ?>
+<?php $component->withName('jet-dropdown-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['href' => ''.e(route('duellolarim')).'']); ?>
+                                    <div class="relative">
+                                        Düellolar
+                                        <?php if(\Illuminate\Support\Facades\Auth::check() && $d->GetDuelloIstekleri(\Illuminate\Support\Facades\Auth::user()->id)->count()): ?>
+                                            <div
+                                                class="rounded-full bg-red-600 w-3 h-3 border-2 border-white absolute top-1 right-0"></div> <?php endif; ?>
+                                    </div>
                                  <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -210,7 +258,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['href' => ''.e(route('profile.show')).'']); ?>
-                                    Profil
+                                    Hesap Ayarları
                                  <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
@@ -274,7 +322,7 @@
 
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
+            <div class="-mr-2 flex items-center sm:hidden relative">
                 <button @click="open = ! open"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -285,6 +333,9 @@
                               stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
+                <?php if(\Illuminate\Support\Facades\Auth::check() && $d->GetDuelloIstekleri(\Illuminate\Support\Facades\Auth::user()->id)->count()): ?>
+                    <div
+                        class="rounded-full bg-red-600 w-3 h-3 border-2 border-white absolute top-5 right-1.5"></div> <?php endif; ?>
             </div>
         </div>
     </div>
@@ -318,12 +369,30 @@
 <?php endif; ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?> 
+             <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.responsive-nav-link','data' => ['href' => ''.e(route('duellolarim')).'','active' => request()->routeIs('duellolarim')]]); ?>
+<?php $component->withName('jet-responsive-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['href' => ''.e(route('duellolarim')).'','active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('duellolarim'))]); ?>
+                <div class="relative">
+                Düellolarım
+                <?php if(\Illuminate\Support\Facades\Auth::check() && $d->GetDuelloIstekleri(\Illuminate\Support\Facades\Auth::user()->id)->count()): ?>
+                    <div
+                        class="rounded-full bg-red-600 w-3 h-3 border-2 border-white absolute -left-2.5 top-0"></div> <?php endif; ?>
+                </div>
+             <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?> 
         </div>
 
         <!-- Responsive Settings Options -->
         <?php if(Auth::check()): ?>
             <div class="pt-4 pb-1 border-t border-gray-200">
-                <div class="flex items-center px-4">
+                <a href="<?php echo e(route('profil', Auth::user()->name)); ?>"><div class="flex items-center px-4">
                     <?php if(Laravel\Jetstream\Jetstream::managesProfilePhotos()): ?>
                         <div class="flex-shrink-0 mr-3">
                             <img class="h-10 w-10 rounded-full object-cover" src="<?php echo e(Auth::user()->profile_photo_url); ?>"
@@ -335,7 +404,7 @@
                         <div class="font-medium text-base text-gray-800"><?php echo e(Auth::user()->name); ?></div>
                         <div class="font-medium text-sm text-gray-500"><?php echo e(Auth::user()->email); ?></div>
                     </div>
-                </div>
+                </div></a>
 
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
@@ -359,7 +428,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['href' => ''.e(route('profile.show')).'','active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('profile.show'))]); ?>
-                        <i class="fas fa-user"></i> Profil
+                        <i class="fas fa-user"></i> Hesap Ayarları
                      <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>

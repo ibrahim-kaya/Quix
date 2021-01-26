@@ -2,12 +2,14 @@
     <x-slot name="header">Quizler</x-slot>
 
     <div class="p-5 lg:p-10">
-        <p class="text-2xl">Quiz: {{ $data['quiz']->baslik }}</p>
+        <p class="text-2xl">Quiz: <b>{{ $data['quiz']->baslik }}</b></p>
+        <p class="mt-2">{!! nl2br(e($data['quiz']->aciklama)) !!}</p>
         <br>
         <form method="post" action="{{ route('sonuc') }}">
             @csrf
             <input hidden name="__id" value="{{ $data['quiz']->id }}">
             <input hidden name="_id" value="{{ $data['quiz']->uniqueid }}">
+            <input hidden name="isim" value="{{ $data['isim'] }}">
             @foreach($data['sorular'] as $soru)
                 <h1 class="text-lg pb-3 font-bold">{{ $loop->index+1 }}) {{ $soru->soru }}</h1>
                 <input type="hidden" name="cevaplar[{{ $loop->index }}][soru]" value="{{$soru->id}}">

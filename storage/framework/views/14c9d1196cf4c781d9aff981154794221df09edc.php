@@ -13,7 +13,7 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
          <?php $__env->slot('logo'); ?> 
-            <img src="/storage/img/logo.png" alt="QuiX" class="w-24">
+            <img src="/storage/img/logo.png" alt="QuiX" class="w-24 mt-5">
          <?php $__env->endSlot(); ?>
 
          <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
