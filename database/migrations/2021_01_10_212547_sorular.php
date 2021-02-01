@@ -20,8 +20,8 @@ class Sorular extends Migration
             $table->text('resim')->nullable();
             $table->text('cevap1');
             $table->text('cevap2');
-            $table->text('cevap3');
-            $table->text('cevap4');
+            $table->text('cevap3')->nullable();
+            $table->text('cevap4')->nullable();
             $table->enum('dogru_cevap', ['cevap1', 'cevap2', 'cevap3', 'cevap4']);
             $table->timestamps();
             $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');

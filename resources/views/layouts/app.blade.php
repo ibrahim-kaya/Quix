@@ -101,13 +101,13 @@
 
     window.addEventListener('ModalKapat', event => {
 
-        $('#delete_modal_body').css('transform', 'scaleY(0)');
-        $('#delete_modal_bg').css('opacity', '0');
-        $('#delete_modal').css('opacity', '0');
+        $('.modal_body').css('transform', 'scaleY(0)');
+        $('.modal_bg').css('opacity', '0');
+        $('.modal').css('opacity', '0');
 
         setTimeout(function(){
-            $('#delete_modal_bg').css('visibility', 'hidden');
-            $('#delete_modal').css('visibility', 'hidden');
+            $('.modal_bg').css('visibility', 'hidden');
+            $('.modal').css('visibility', 'hidden');
             document.body.style.overflow = 'auto';
         }, 300);
     })

@@ -23,8 +23,8 @@
                 @csrf
 
                 <div class="flex flex-col text-sm">
-                    <label class="font-bold mb-2">Düello yapmak istediğin arkadaşının adını yaz:</label>
-                    <input id="search" name="isim" type="text" class="form-control" placeholder="Bir isim yaz..." value="{{old('isim')}}" />
+                    <label class="font-bold mb-2">Düello yapmak istediğin kullanıcının adını yaz:</label>
+                    <input id="search" name="isim" type="text" class="form-control" placeholder="Bir kullanıcı adı yaz..." value="{{old('isim')}}" />
                 </div>
 
                 <div class="text-sm flex flex-col">

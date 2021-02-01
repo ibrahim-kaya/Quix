@@ -24,11 +24,11 @@
                 <input type="radio" id="cevap{{$soru->id}}-2" name="cevaplar[{{ $loop->index }}][cevap]" class="hidden secenek" value="cevap2" @if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap2') checked @endif>
                 <label for="cevap{{$soru->id}}-2"><span class="text-lg font-bold">b)</span> {{ $soru->cevap2 }}</label><br>
 
-                <input type="radio" id="cevap{{$soru->id}}-3" name="cevaplar[{{ $loop->index }}][cevap]" class="hidden secenek" value="cevap3" @if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap3') checked @endif>
-                <label for="cevap{{$soru->id}}-3"><span class="text-lg font-bold">c)</span> {{ $soru->cevap3 }}</label><br>
+                @if($soru->cevap3) <input type="radio" id="cevap{{$soru->id}}-3" name="cevaplar[{{ $loop->index }}][cevap]" class="hidden secenek" value="cevap3" @if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap3') checked @endif>
+                <label for="cevap{{$soru->id}}-3"><span class="text-lg font-bold">c)</span> {{ $soru->cevap3 }}</label><br> @endif
 
-                <input type="radio" id="cevap{{$soru->id}}-4" name="cevaplar[{{ $loop->index }}][cevap]" class="hidden secenek" value="cevap4" @if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap4') checked @endif>
-                <label for="cevap{{$soru->id}}-4"><span class="text-lg font-bold">d)</span> {{ $soru->cevap4 }}</label><br>
+                @if($soru->cevap4) <input type="radio" id="cevap{{$soru->id}}-4" name="cevaplar[{{ $loop->index }}][cevap]" class="hidden secenek" value="cevap4" @if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap4') checked @endif>
+                <label for="cevap{{$soru->id}}-4"><span class="text-lg font-bold">d)</span> {{ $soru->cevap4 }}</label><br> @endif
 
                 <br>@if($loop->index < $loop->count - 1) <hr><br> @endif
 

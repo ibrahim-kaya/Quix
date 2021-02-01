@@ -6,7 +6,7 @@
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header'); ?> Quiz Oluştur <?php $__env->endSlot(); ?>
 
-    <form method="POST" action="<?php echo e(route('quizler.store')); ?>">
+    <form method="POST" action="<?php echo e(route('quizler.store')); ?>" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
 
         <div class="px-5 py-5">
@@ -22,7 +22,7 @@
 
             <div class="flex flex-col text-sm">
                 <label class="font-bold mt-4 mb-2">Quiz Görseli (Opsiyonel)</label>
-                <input type="file" class="rounded-md w-full" name="resim">
+                <input type="file" class="rounded-md w-full" name="gorsel">
             </div>
 
             <div class="text-sm flex flex-col">

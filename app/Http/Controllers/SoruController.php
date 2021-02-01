@@ -60,12 +60,12 @@ class SoruController extends Controller
     public function store(Request $request, $uniqueid)
     {
         $validated = $request->validate([
-            'soru' => 'required|max:250',
+            'soru' => 'required|max:500',
             'resim' => 'image|nullable|max:1024|mimes:jpg,jpeg,png',
             'cevap1' => 'required|max:250',
             'cevap2' => 'required|max:250',
-            'cevap3' => 'required|max:250',
-            'cevap4' => 'required|max:250',
+            'cevap3' => 'nullable|max:250',
+            'cevap4' => 'nullable|max:250',
             'dogru_cevap' => 'required|in:cevap1,cevap2,cevap3,cevap4',
         ], [], [
             'soru' => 'Soru',
@@ -74,8 +74,10 @@ class SoruController extends Controller
             'cevap2' => 'B şıkkı',
             'cevap3' => 'C şıkkı',
             'cevap4' => 'D şıkkı',
-            'dogru_cevap' => 'Doğru cevap',
+            'dogru_cevap' => 'Doğru Cevap'
         ]);
+
+        if((is_null($request->cevap3) && $request->dogru_cevap === "cevap3") || (is_null($request->cevap4) && $request->dogru_cevap === "cevap4")) return redirect()->back()->withErrors(['Geçerli bir doğru cevap seçmedin!', 'dogru_cevap']);
 
         $id = Quiz::where('uniqueid', $uniqueid)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
 
@@ -99,6 +101,62 @@ class SoruController extends Controller
         }
         Quiz::find($id)->sorular()->create($request->post());
         return redirect()->route('sorular.index', $uniqueid)->withSuccess('Soru başarıyla eklendi!');
+    }
+
+    public function soruGuncelle(Request $request, $quizid, $soruid)
+    {
+        $validated = $request->validate([
+            'esoru' => 'required|max:500',
+            'resim' => 'image|nullable|max:1024|mimes:jpg,jpeg,png',
+            'ecevap1' => 'required|max:250',
+            'ecevap2' => 'required|max:250',
+            'ecevap3' => 'nullable|max:250',
+            'ecevap4' => 'nullable|max:250',
+            'dogru_cevap' => 'required|in:cevap1,cevap2,cevap3,cevap4',
+        ], [], [
+            'esoru' => 'Soru',
+            'resim' => 'Soru resmi',
+            'ecevap1' => 'A şıkkı',
+            'ecevap2' => 'B şıkkı',
+            'ecevap3' => 'C şıkkı',
+            'ecevap4' => 'D şıkkı',
+            'dogru_cevap' => 'Doğru cevap'
+        ]);
+
+        if((is_null($request->ecevap3) && $request->dogru_cevap === "cevap3") || (is_null($request->ecevap4) && $request->dogru_cevap === "cevap4")) return redirect()->back()->withErrors('Geçerli bir doğru cevap seçmedin!');
+
+        $id = Quiz::where('uniqueid', $quizid)->get()->first()->id ?? abort(404, 'Quiz bulunamadı!');
+        if(Quiz::find(Soru::find($soruid)->quiz_id)->getUser->id != Auth::user()->id) return redirect()->back()->withErrors('Bu soru senin Quiz\'ine ait değil!');
+
+        $request->resim = Soru::find($soruid)->resim;
+
+        if($request->hasFile('eresim')){
+            $fileName = 'soru_'.$soruid.'.'.$request->eresim->getClientOriginalextension();
+            $fileDir = '/uploads/'.$fileName;
+            $request->eresim->move(public_path('uploads').'/tmp', $fileName);
+
+            $width = 400; // your max width
+            $height = 256; // your max height
+            $img = Image::make(public_path('uploads').'/tmp/'.$fileName);
+            $img->height() > $img->width() ? $width=null : $height=null;
+            $img->resize($width, $height, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save(public_path('uploads').'/'.$fileName);
+            File::delete(public_path('uploads').'/tmp/'.$fileName);
+            $request->resim = $fileDir;
+        }
+
+        Soru::find($soruid)->update([
+           'soru' => $request->esoru,
+           'cevap1' => $request->ecevap1,
+           'cevap2' => $request->ecevap2,
+           'cevap3' => $request->ecevap3,
+           'cevap4' => $request->ecevap4,
+           'dogru_cevap' => $request->dogru_cevap,
+           'resim' => $request->resim,
+        ]);
+        return redirect()->route('sorular.index', $quizid)->withSuccess('Soru başarıyla güncellendi!');
     }
 
     /**

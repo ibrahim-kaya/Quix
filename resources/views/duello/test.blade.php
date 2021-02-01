@@ -28,11 +28,11 @@
         <input type="radio" id="cevap-2" name="cevap" class="hidden secenek" value="cevap2">
         <label for="cevap-2"><span class="text-lg font-bold">b)</span> {{ $data['soru']->cevap2 }}</label><br>
 
-        <input type="radio" id="cevap-3" name="cevap" class="hidden secenek" value="cevap3">
-        <label for="cevap-3"><span class="text-lg font-bold">c)</span> {{ $data['soru']->cevap3 }}</label><br>
+        @if($soru->cevap3) <input type="radio" id="cevap-3" name="cevap" class="hidden secenek" value="cevap3">
+        <label for="cevap-3"><span class="text-lg font-bold">c)</span> {{ $data['soru']->cevap3 }}</label><br> @endif
 
-        <input type="radio" id="cevap-4" name="cevap" class="hidden secenek" value="cevap4">
-        <label for="cevap-4"><span class="text-lg font-bold">d)</span> {{ $data['soru']->cevap4 }}</label><br>
+        @if($soru->cevap4) <input type="radio" id="cevap-4" name="cevap" class="hidden secenek" value="cevap4">
+        <label for="cevap-4"><span class="text-lg font-bold">d)</span> {{ $data['soru']->cevap4 }}</label><br> @endif
         <br>
         <button type="submit" class="btn btn--primary w-full lg:w-1/2 font-bold"><i class="fas fa-check-circle"></i>
             Onayla

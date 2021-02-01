@@ -20,7 +20,7 @@
         <div class="flex justify-center h-32 overflow-hidden">
             <a href="{{ route('quizler.show', $quiz->uniqueid) }}"><img
                     src="{{ $quiz->resim }}"
-                    alt="Quiz Resim" class="w-full" onerror="this.src='https://agentmajeur.fr/wp-content/uploads/femme-question-bleue-1.jpg'"></a>
+                    alt="Quiz Resim" class="w-full" onerror="this.src='/storage/img/quiz-kapak.jpg'" class="shadow-md"></a>
         </div>
         <a href="{{ route('quizler.show', $quiz->uniqueid) }}" class="p-3 yazi-kisalt"
            title="{{ $quiz->baslik }}">{{ $quiz->baslik }}</a><br>

@@ -37,15 +37,15 @@
     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('navigation-menu')->html();
-} elseif ($_instance->childHasBeenRendered('lH9ZbJJ')) {
-    $componentId = $_instance->getRenderedChildComponentId('lH9ZbJJ');
-    $componentTag = $_instance->getRenderedChildComponentTagName('lH9ZbJJ');
+} elseif ($_instance->childHasBeenRendered('xMEVwKJ')) {
+    $componentId = $_instance->getRenderedChildComponentId('xMEVwKJ');
+    $componentTag = $_instance->getRenderedChildComponentTagName('xMEVwKJ');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('lH9ZbJJ');
+    $_instance->preserveRenderedChild('xMEVwKJ');
 } else {
     $response = \Livewire\Livewire::mount('navigation-menu');
     $html = $response->html();
-    $_instance->logRenderedChild('lH9ZbJJ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('xMEVwKJ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -130,13 +130,13 @@ echo $html;
 
     window.addEventListener('ModalKapat', event => {
 
-        $('#delete_modal_body').css('transform', 'scaleY(0)');
-        $('#delete_modal_bg').css('opacity', '0');
-        $('#delete_modal').css('opacity', '0');
+        $('.modal_body').css('transform', 'scaleY(0)');
+        $('.modal_bg').css('opacity', '0');
+        $('.modal').css('opacity', '0');
 
         setTimeout(function(){
-            $('#delete_modal_bg').css('visibility', 'hidden');
-            $('#delete_modal').css('visibility', 'hidden');
+            $('.modal_bg').css('visibility', 'hidden');
+            $('.modal').css('visibility', 'hidden');
             document.body.style.overflow = 'auto';
         }, 300);
     })

@@ -21,6 +21,9 @@ $d = new \App\Helper\Duello();
                     <x-jet-nav-link href="{{ route('quizler.index') }}" :active="request()->routeIs('quizler.index')">
                         Quizler
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('duellolarim') }}" :active="request()->routeIs('duellolarim')">
+                        Düellolarım
+                    </x-jet-nav-link>
                 </div>
             </div>
 

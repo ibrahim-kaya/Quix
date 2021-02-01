@@ -70,7 +70,7 @@ class DuelloController extends Controller
                 ->limit(10)
                 ->get(),
         ];
-        if (!$data['sorular']->count()) return redirect()->route('duello_olustur')->withErrors('Bu kategori bulunamadı!');
+        if ($data['sorular']->count() < 10) return redirect()->route('duello_olustur')->withErrors('Bu kategoride yeterli soru yok!');
 
         $duelloid = bin2hex(random_bytes(6));
         $duello = DB::table('duello')->insertGetId([

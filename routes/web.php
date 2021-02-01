@@ -31,10 +31,13 @@ Route::group([
 Route::resource('quiz', \App\Http\Controllers\TestController::class);
 Route::resource('quizler', \App\Http\Controllers\QuizController::class);
 Route::resource('quizlerim', \App\Http\Controllers\EditQuiz::class);
-Route::resource('quiz/{uniqueid}/sorular', \App\Http\Controllers\SoruController::class);
-Route::get('quiz/{uniqueid}/sorular/{soruid}/sil', '\App\Http\Controllers\SoruController@soruSil');
 Route::post('yayinlandi', '\App\Http\Controllers\QuizController@yayinlandi')->name('yayinlandi');
 Route::post('oyla', '\App\Http\Controllers\QuizController@oyVer');
+
+//Sorular
+Route::resource('quiz/{uniqueid}/sorular', \App\Http\Controllers\SoruController::class);
+Route::get('quiz/{uniqueid}/sorular/{soruid}/sil', '\App\Http\Controllers\SoruController@soruSil');
+Route::post('quiz/{uniqueid}/sorular/{soruid}/guncelle', '\App\Http\Controllers\SoruController@soruGuncelle')->name('soru_guncelle');
 
 // Sonuç
 Route::post('sonuc', '\App\Http\Controllers\TestController@sonuc')->name('sonuc');

@@ -1,4 +1,6 @@
 <?php return array (
+  'edit-soru' => 'App\\Http\\Livewire\\EditSoru',
+  'post-soru' => 'App\\Http\\Livewire\\PostSoru',
   'quizlerim' => 'App\\Http\\Livewire\\Quizlerim',
-  'quizlist' => 'App\\Http\\Livewire\\Quizlist',
+  'sorular' => 'App\\Http\\Livewire\\Sorular',
 );
