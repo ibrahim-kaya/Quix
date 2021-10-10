@@ -16,7 +16,7 @@ class Cevaplar extends Migration
         Schema::create('cevaplar', function (Blueprint $table) {
             $table->id();
             $table->text('userid');
-            $table->text('isim');
+            $table->text('isim')->nullable();
             $table->unsignedBigInteger('soru_id');
             $table->enum('cevap', ['cevap1', 'cevap2', 'cevap3', 'cevap4']);
             $table->timestamps();
