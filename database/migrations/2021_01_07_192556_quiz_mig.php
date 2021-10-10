@@ -13,7 +13,7 @@ class QuizMig extends Migration
      */
     public function up()
     {
-        Schema::create('Quizzes', function (Blueprint $table) {
+        Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->string('uniqueid')->unique();
             $table->integer('olusturan_id');
