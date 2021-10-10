@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ebd37b91-669c-4145-a730-47cec373c8c7" name="Default Changelist" comment="Build 0.6&#10;- Düello sistemi eklendi.&#10;- Büyük ölçekte eksikler giderildi." />
+    <list default="true" id="ebd37b91-669c-4145-a730-47cec373c8c7" name="Default Changelist" comment="Build 0.6&#10;- Düello sistemi eklendi.&#10;- Büyük ölçekte eksikler giderildi.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_11_121259_cevaplar.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_11_121259_cevaplar.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -270,7 +273,7 @@
       <workItem from="1627116602977" duration="51000" />
       <workItem from="1627116819356" duration="42000" />
       <workItem from="1627117011608" duration="3000" />
-      <workItem from="1633872578089" duration="3277000" />
+      <workItem from="1633872578089" duration="3969000" />
     </task>
     <task id="LOCAL-00001" summary="Ilk Surum">
       <created>1610040544293</created>
