@@ -1,4 +1,8 @@
 <div>
+    <div class="flex justify-end m-3"><a href="<?php echo e(route('quizler.create')); ?>">
+            <button class="btn-sm btn--green"><i class="fas fa-plus"></i> Quiz Oluştur</button>
+        </a></div>
+
     <div>
         <?php if($data['quizzes']->count()): ?>
             <table class="min-w-full leading-normal quiz-table mb-5 border-t border-gray-200">

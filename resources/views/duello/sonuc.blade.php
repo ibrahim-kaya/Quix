@@ -31,7 +31,7 @@
         </div>
 
         <div class="mt-10 bg-gray-100 rounded-md border border-gray-200 sm:m-5 rounded-md text-center">
-            <div class="sm:flex sm:justify-between sm:justify-around items-center py-1">
+            <div class="sm:flex sm:justify-between sm:justify-around items-center mt-5 py-1">
                 <a href="{{ route('profil', $data['user1']->name) }}" title="Profile git" class="w-max">
                     <div class="font-bold flex items-center justify-center">
                         <img class="inline w-10 h-10 rounded-full"
@@ -42,7 +42,7 @@
                 </a>
                 <div>
                     <div
-                        class="@if($data['u1_durum'] == 2) text-white bg-green-400 border border-green-500 @else bg-yellow-200 border border-yellow-300 text-gray-600 @endif rounded-md p-1 text-center">
+                        class="@if($data['u1_durum'] == 2) text-white bg-green-400 border border-green-500 @else bg-yellow-200 border border-yellow-300 text-gray-600 @endif rounded-md p-1 text-center mt-2 sm:mt-0">
                         @if($data['u1_durum'] == 2)
                             <p><i class="fas fa-star"></i> Puan: {{ $data['u1_puan'] }}</p>
                         @else
@@ -63,7 +63,7 @@
                 </a>
                 <div>
                     <div
-                        class="@if($data['u2_durum'] == 2) text-white bg-green-400 border border-green-500 @else bg-yellow-200 border border-yellow-300 text-gray-600 @endif rounded-md p-1 text-center">
+                        class="@if($data['u2_durum'] == 2) text-white bg-green-400 border border-green-500 @else bg-yellow-200 border border-yellow-300 text-gray-600 @endif rounded-md p-1 text-center mt-2 sm:mt-0">
                         @if(!$data['u2_durum'])
                             <p>Henüz kabul etmedi...</p>
                         @elseif($data['u2_durum'] == 1)

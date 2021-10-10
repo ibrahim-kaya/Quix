@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $header.' ~ Quix' }}</title>
+    <title>{{ $header.' ~ '.config('app.name') }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -56,11 +56,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg relative">
                 {{ $slot }}
-                <footer class="mt-4 border-t py-3 text-xs text-gray-500 text-center leading-5 bg-gray-100">
-                    <a href="">Hizmet Şartları</a> · <a href="">Gizlilik Politikası</a> · <a href="">Katkıda Bulunanlar</a><br>
-                    <a href="">Twitter</a> · <a href="">Instagram</a> · <a href="">Facebook</a><br>
-                    © 2021 Quix
-                </footer>
+                @include('layouts.footer')
             </div>
         </div>
     </div>

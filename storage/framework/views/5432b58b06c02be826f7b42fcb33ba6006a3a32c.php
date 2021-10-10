@@ -32,7 +32,7 @@
     
     <?php $__env->slot('footer'); ?>
         <?php $__env->startComponent('mail::footer'); ?>
-            © <?php echo e(date('Y')); ?> <?php echo e(config('app.name')); ?>. <?php echo app('translator')->get('All rights reserved.'); ?>
+            © <?php echo e(date('Y')); ?> <?php echo e(config('app.name')); ?>. <?php echo app('translator')->get('Tüm hakları saklıdır.'); ?>
         <?php if (isset($__componentOriginala991192d5a5d5f731a8cf5f31528af3b372f333c)): ?>
 <?php $component = $__componentOriginala991192d5a5d5f731a8cf5f31528af3b372f333c; ?>
 <?php unset($__componentOriginala991192d5a5d5f731a8cf5f31528af3b372f333c); ?>

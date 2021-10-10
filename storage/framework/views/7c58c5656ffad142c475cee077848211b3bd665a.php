@@ -5,9 +5,9 @@
 
 <?php else: ?>
 <?php if($level === 'error'): ?>
-# <?php echo app('translator')->get('Whoops!'); ?>
+# <?php echo app('translator')->get('Off!'); ?>
 <?php else: ?>
-# <?php echo app('translator')->get('Hello!'); ?>
+# <?php echo app('translator')->get('Selam!'); ?>
 <?php endif; ?>
 <?php endif; ?>
 
@@ -52,7 +52,7 @@
 <?php echo e($salutation); ?>
 
 <?php else: ?>
-<?php echo app('translator')->get('Regards'); ?>,<br>
+<?php echo app('translator')->get('Saygılarımızla'); ?>,<br>
 <?php echo e(config('app.name')); ?>
 
 <?php endif; ?>
@@ -61,8 +61,7 @@
 <?php if(isset($actionText)): ?>
 <?php $__env->slot('subcopy'); ?>
 <?php echo app('translator')->get(
-    "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
+    "Eğer yukarıdaki \":actionText\" butonuna basıyorum ama çalışmıyor diyorsan aşağıdaki linki kopyalayıp tarayıcına yapıştırabilirsin.\n",
     [
         'actionText' => $actionText,
     ]

@@ -35,6 +35,9 @@
 
     <div class="m-5">
         <p class="text-gray-600 mt-10">Dikkat!</p>
+        <li class="text-gray-600 ml-3 text-sm mt-1.5 leading-4">Seçtiğin kategoride oluşturulmuş olan Quizlerden
+            rastgele 10 tane soru seçilir ve düello başlatılır.
+        </li>
         <li class="text-gray-600 ml-3 text-sm mt-1.5 leading-4">Düello; seçeceğin bir arkadaşınla birebir yaptığın bilgi
             yarışmasıdır.
         </li>

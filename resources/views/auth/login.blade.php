@@ -3,7 +3,7 @@
 
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <img src="/storage/img/logo.png" alt="QuiX" class="w-24 mt-5">
+            <img src="/storage/img/logo.png" alt="{{ config('app.name') }}" class="w-24 mt-5">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

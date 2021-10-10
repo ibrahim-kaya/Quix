@@ -43,6 +43,9 @@
 
         <p class="text-gray-600 mt-10">Dikkat!</p>
         <li class="text-gray-600 ml-3 text-sm mt-1.5 leading-4">Düello; seçeceğin bir arkadaşınla birebir yaptığın bilgi yarışmasıdır.</li>
+        <li class="text-gray-600 ml-3 text-sm mt-1.5 leading-4">Seçtiğin kategoride oluşturulmuş olan Quizlerden
+            rastgele 10 tane soru seçilir ve düello başlatılır.
+        </li>
         <li class="text-gray-600 ml-3 text-sm mt-1.5 leading-4">Düelloyu oluşturduktan sonra 3 gün içinde iki tarafta soruları cevaplamalıdır. Aksi halde düello iptal olur.</li>
         <li class="text-gray-600 ml-3 text-sm mt-1.5 leading-4">Her soru için 45 saniye süren var. Ne kadar kısa sürede cevaplarsan o kadar fazla puan alırsın.</li>
         <li class="text-gray-600 ml-3 text-sm mt-1.5 leading-4">Süre dolduğunda soruyu cevaplamamışsan rastgele bir şık seçilip diğer soruya geçilecektir.</li>

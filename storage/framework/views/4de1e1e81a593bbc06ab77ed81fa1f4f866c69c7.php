@@ -7,7 +7,7 @@
      <?php $__env->slot('header'); ?> Anasayfa <?php $__env->endSlot(); ?>
     <div class="flex flex-row p-3 items-center bg-gray-50 border-b border-gray-200">
         <p class="text-lg"><img src="/storage/img/anasayfa.svg" alt="" class="w-7 h-7 mr-1 inline"><span
-                class="font-bold align-middle">Akışım</span></p>
+                class="font-bold align-middle">Akış</span></p>
     </div>
 
 

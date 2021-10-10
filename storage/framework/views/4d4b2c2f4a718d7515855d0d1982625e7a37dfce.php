@@ -29,11 +29,11 @@
                 <input type="radio" id="cevap<?php echo e($soru->id); ?>-2" name="cevaplar[<?php echo e($loop->index); ?>][cevap]" class="hidden secenek" value="cevap2" <?php if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap2'): ?> checked <?php endif; ?>>
                 <label for="cevap<?php echo e($soru->id); ?>-2"><span class="text-lg font-bold">b)</span> <?php echo e($soru->cevap2); ?></label><br>
 
-                <input type="radio" id="cevap<?php echo e($soru->id); ?>-3" name="cevaplar[<?php echo e($loop->index); ?>][cevap]" class="hidden secenek" value="cevap3" <?php if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap3'): ?> checked <?php endif; ?>>
-                <label for="cevap<?php echo e($soru->id); ?>-3"><span class="text-lg font-bold">c)</span> <?php echo e($soru->cevap3); ?></label><br>
+                <?php if($soru->cevap3): ?> <input type="radio" id="cevap<?php echo e($soru->id); ?>-3" name="cevaplar[<?php echo e($loop->index); ?>][cevap]" class="hidden secenek" value="cevap3" <?php if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap3'): ?> checked <?php endif; ?>>
+                <label for="cevap<?php echo e($soru->id); ?>-3"><span class="text-lg font-bold">c)</span> <?php echo e($soru->cevap3); ?></label><br> <?php endif; ?>
 
-                <input type="radio" id="cevap<?php echo e($soru->id); ?>-4" name="cevaplar[<?php echo e($loop->index); ?>][cevap]" class="hidden secenek" value="cevap4" <?php if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap4'): ?> checked <?php endif; ?>>
-                <label for="cevap<?php echo e($soru->id); ?>-4"><span class="text-lg font-bold">d)</span> <?php echo e($soru->cevap4); ?></label><br>
+                <?php if($soru->cevap4): ?> <input type="radio" id="cevap<?php echo e($soru->id); ?>-4" name="cevaplar[<?php echo e($loop->index); ?>][cevap]" class="hidden secenek" value="cevap4" <?php if(old('cevaplar.'. $loop->index .'.cevap') == 'cevap4'): ?> checked <?php endif; ?>>
+                <label for="cevap<?php echo e($soru->id); ?>-4"><span class="text-lg font-bold">d)</span> <?php echo e($soru->cevap4); ?></label><br> <?php endif; ?>
 
                 <br><?php if($loop->index < $loop->count - 1): ?> <hr><br> <?php endif; ?>
 

@@ -8,8 +8,7 @@
             </div>
         </a>
         <div class="bg-gray-300 border-b sm:border-b-0 sm:border-r border-gray-300 py-1 sm:py-3 px-2 px-1">
-            Devam Edenler <b class="text-gray-500">({{ count($data['devameden']) + $data['kabulbekleyen']->count() }}
-                )</b>
+            Devam Edenler <b class="text-gray-500">({{ count($data['devameden']) + $data['kabulbekleyen']->count() }})</b>
         </div>
         <a href="?durum=istekler">
             <div class="sm:border-r border-gray-300 py-1 sm:py-3 px-2 px-1">
@@ -79,7 +78,7 @@
                 </div>
             @endforeach
 
-                @if(!count($data['devameden']) && !count($data['devameden']))
+                @if(!count($data['devameden']) && !count($data['kabulbekleyen']))
                     <div class="text-center text-gray-600 w-full p-10 border border-gray-200 rounded-md bg-gray-100"><p>Devam eden düello bulunamadı.</p></div>
                 @endif
         </div>

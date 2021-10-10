@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Quix</title>
+    <title>{{ config('app.name') }} ~ İstediğin sorudan başla!</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -63,7 +63,7 @@
                 Kendi Quizini Oluştur!
             </h4>
             <p class="text-gray-600 mb-8">
-                Önceden hazırlanıp koyulmuş Quizler sıkıcı mı geliyor? O zaman oyuna seni de dahil edelim! QuiX'de kendi
+                Önceden hazırlanıp koyulmuş Quizler sıkıcı mı geliyor? O zaman oyuna seni de dahil edelim! {{ config('app.name') }}'de kendi
                 Quizini oluşturup, ister arkadaşlarına özel yapabilir, istersen de herkese açık yapıp diğer
                 kullanıcıların da
                 çözmesini sağlayabilirsin!
@@ -93,7 +93,7 @@
                 Resimlerle Quizini Renklendir!
             </h4>
             <p class="text-gray-600 mb-8">
-                Sadece yazılarla hazırlanmış Quizler sıkıcı mı geliyor? Bizce de öyle. O yüzden QuiX'de istersen
+                Sadece yazılarla hazırlanmış Quizler sıkıcı mı geliyor? Bizce de öyle. O yüzden {{ config('app.name') }}'de istersen
                 sorularına görsel ekleyerek Quizini tekdüzelikten çıkarıp daha ilgi çekici hale getirebilirsin!
             </p>
         </div>
@@ -103,13 +103,7 @@
     </div>
 </section>
 
-<footer class="mt-4 border-t py-3 text-xs text-gray-500 text-center leading-5 bg-gray-100">
-
-    <a href="">Hizmet Şartları</a> · <a href="">Gizlilik Politikası</a> · <a href="">Çerez Politikası</a><br>
-    <a href="">Twitter</a> · <a href="">Instagram</a> · <a href="">Facebook</a><br>
-    <a href='https://www.freepik.com/'>İllustrasyonlar freepik.com'dan alınmıştır. - www.freepik.com</a><br>
-    © 2021 Quix
-</footer>
+@include('layouts.footer')
 
 
 </body>

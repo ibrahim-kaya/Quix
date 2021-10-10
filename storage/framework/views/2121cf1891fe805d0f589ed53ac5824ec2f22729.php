@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title><?php echo e($header.' ~ Quix'); ?></title>
+    <title><?php echo e($header.' ~ '.config('app.name')); ?></title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -37,15 +37,15 @@
     <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('navigation-menu')->html();
-} elseif ($_instance->childHasBeenRendered('xMEVwKJ')) {
-    $componentId = $_instance->getRenderedChildComponentId('xMEVwKJ');
-    $componentTag = $_instance->getRenderedChildComponentTagName('xMEVwKJ');
+} elseif ($_instance->childHasBeenRendered('NMsEwRI')) {
+    $componentId = $_instance->getRenderedChildComponentId('NMsEwRI');
+    $componentTag = $_instance->getRenderedChildComponentTagName('NMsEwRI');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('xMEVwKJ');
+    $_instance->preserveRenderedChild('NMsEwRI');
 } else {
     $response = \Livewire\Livewire::mount('navigation-menu');
     $html = $response->html();
-    $_instance->logRenderedChild('xMEVwKJ', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('NMsEwRI', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -84,11 +84,7 @@ echo $html;
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg relative">
                 <?php echo e($slot); ?>
 
-                <footer class="mt-4 border-t py-3 text-xs text-gray-500 text-center leading-5 bg-gray-100">
-                    <a href="">Hizmet Şartları</a> · <a href="">Gizlilik Politikası</a> · <a href="">Katkıda Bulunanlar</a><br>
-                    <a href="">Twitter</a> · <a href="">Instagram</a> · <a href="">Facebook</a><br>
-                    © 2021 Quix
-                </footer>
+                <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
         </div>
     </div>

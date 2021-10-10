@@ -12,7 +12,7 @@
                  class="absolute ml-3 border bg-blue-100 border-blue-200 my-1 mr-3 py-1 px-3 rounded-md z-10 transition duration-500 max-w-3xl">
                 <div>
                     <div id="kategori-btn" class="cursor-pointer">
-                        <img src="https://www.flaticon.com/premium-icon/icons/svg/2735/2735293.svg" alt=""
+                        <img src="/storage/img/kategoriler.svg" alt=""
                              class="w-9 h-9 inline-block">
                         <p class="inline">Kategoriler</p>
                     </div>

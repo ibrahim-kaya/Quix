@@ -59,3 +59,14 @@ Route::post('duello/{uniqueid}', '\App\Http\Controllers\DuelloController@testEkr
 Route::post('duello/{uniqueid}/red', '\App\Http\Controllers\DuelloController@reddet')->middleware(['auth:sanctum', 'verified'])->name('duello_red');
 Route::get('duello/sonuc/{uniqueid}', '\App\Http\Controllers\DuelloController@sonuc')->middleware(['auth:sanctum', 'verified'])->name('duello_sonuc');
 Route::get('autocomplete', '\App\Http\Controllers\DuelloController@autocomplete')->name('autocomplete');
+
+//Credits
+Route::get('/credits', function () {
+    return view('credits.resimler');
+})->name('credits_1');
+Route::get('/credits/sec-2', function () {
+    return view('credits.sec-2');
+})->name('credits_2');
+Route::get('/credits/sec-3', function () {
+    return view('credits.sec-3');
+})->name('credits_3');
