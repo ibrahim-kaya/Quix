@@ -20,8 +20,7 @@ class Cevaplar extends Migration
             $table->unsignedBigInteger('soru_id');
             $table->enum('cevap', ['cevap1', 'cevap2', 'cevap3', 'cevap4']);
             $table->timestamps();
-            $table->foreign('soru_id')->references('id')->on('sorular')->onDelete('cascade');;
-            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('soru_id')->references('id')->on('sorular')->onDelete('cascade');
         });
     }
 
