@@ -6,6 +6,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
+use League\MimeTypeDetection\FinfoMimeTypeDetector;
 
 class TemporaryUploadedFile extends UploadedFile
 {
@@ -23,43 +24,58 @@ class TemporaryUploadedFile extends UploadedFile
         parent::__construct(stream_get_meta_data($tmpFile)['uri'], $this->path);
     }
 
-    public function isValid()
+    public function getPath(): string
+    {
+        return $this->storage->path(FileUploadConfiguration::directory());
+    }
+
+    public function isValid(): bool
     {
         return true;
     }
 
-    public function getSize()
+    public function getSize(): int
     {
-        if (app()->environment('testing') && str($this->getfilename())->contains('-size=')) {
+        if (app()->runningUnitTests() && str($this->getfilename())->contains('-size=')) {
             return (int) str($this->getFilename())->between('-size=', '.')->__toString();
         }
 
         return (int) $this->storage->size($this->path);
     }
 
-    public function getMimeType()
+    public function getMimeType(): string
     {
-        return $this->storage->mimeType($this->path);
+        $mimeType = $this->storage->mimeType($this->path);
+
+        // Flysystem V2.0+ removed guess mimeType from extension support, so it has been re-added back
+        // in here to ensure the correct mimeType is returned when using faked files in tests
+        if (in_array($mimeType, ['application/octet-stream', 'inode/x-empty', 'application/x-empty'])) {
+            $detector = new FinfoMimeTypeDetector();
+
+            $mimeType = $detector->detectMimeTypeFromPath($this->path) ?: 'text/plain';
+        }
+
+        return $mimeType;
     }
 
-    public function getFilename()
+    public function getFilename(): string
     {
         return $this->getName($this->path);
     }
 
-    public function getRealPath()
+    public function getRealPath(): string
     {
         return $this->storage->path($this->path);
     }
 
-    public function getClientOriginalName()
+    public function getClientOriginalName(): string
     {
         return $this->extractOriginalNameFromFilePath($this->path);
     }
 
     public function temporaryUrl()
     {
-        if (FileUploadConfiguration::isUsingS3() && ! app()->environment('testing')) {
+        if ((FileUploadConfiguration::isUsingS3() or FileUploadConfiguration::isUsingGCS()) && ! app()->runningUnitTests()) {
             return $this->storage->temporaryUrl(
                 $this->path,
                 now()->addDay(),
@@ -67,13 +83,7 @@ class TemporaryUploadedFile extends UploadedFile
             );
         }
 
-        $supportedPreviewTypes = config('livewire.temporary_file_upload.preview_mimes', [
-            'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
-            'mov', 'avi', 'wmv', 'mp3', 'm4a',
-            'jpg', 'jpeg', 'mpga', 'webp', 'wma',
-        ]);
-
-        if (! in_array($this->guessExtension(),  $supportedPreviewTypes)) {
+        if (method_exists($this->storage->getAdapter(), 'getTemporaryUrl') || ! $this->isPreviewable()) {
             // This will throw an error because it's not used with S3.
             return $this->storage->temporaryUrl($this->path, now()->addDay());
         }
@@ -81,6 +91,17 @@ class TemporaryUploadedFile extends UploadedFile
         return URL::temporarySignedRoute(
             'livewire.preview-file', now()->addMinutes(30), ['filename' => $this->getFilename()]
         );
+    }
+
+    public function isPreviewable()
+    {
+        $supportedPreviewTypes = config('livewire.temporary_file_upload.preview_mimes', [
+            'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
+            'mov', 'avi', 'wmv', 'mp3', 'm4a',
+            'jpg', 'jpeg', 'mpga', 'webp', 'wma',
+        ]);
+
+        return in_array($this->guessExtension(),  $supportedPreviewTypes);
     }
 
     public function readStream()

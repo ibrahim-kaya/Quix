@@ -3,26 +3,52 @@
 namespace Livewire;
 
 use Illuminate\Support\Facades\URL;
+use League\Flysystem\Cached\CachedAdapter;
 
 class GenerateSignedUploadUrl
 {
     public function forLocal()
     {
         return URL::temporarySignedRoute(
-            'livewire.upload-file', now()->addMinutes(5)
+            'livewire.upload-file', now()->addMinutes(FileUploadConfiguration::maxUploadTime())
         );
     }
 
     public function forS3($file, $visibility = 'private')
     {
-        $adapter = FileUploadConfiguration::storage()->getDriver()->getAdapter();
+        $driver = FileUploadConfiguration::storage()->getDriver();
+
+        // Flysystem V2+ doesn't allow direct access to adapter, so we need to invade instead.
+        if (method_exists($driver, 'getAdapter')) {
+            $adapter = $driver->getAdapter();
+        } else {
+            $adapter = invade($driver)->adapter;
+        }
+
+        if ($adapter instanceof CachedAdapter) {
+            $adapter = $adapter->getAdapter();
+        }
+
+        // Flysystem V2+ doesn't allow direct access to client, so we need to invade instead.
+        if (method_exists($adapter, 'getClient')) {
+            $client = $adapter->getClient();
+        } else {
+            $client = invade($adapter)->client;
+        }
+
+        // Flysystem V2+ doesn't allow direct access to bucket, so we need to invade instead.
+        if (method_exists($adapter, 'getBucket')) {
+            $bucket = $adapter->getBucket();
+        } else {
+            $bucket = invade($adapter)->bucket;
+        }
 
         $fileType = $file->getMimeType();
         $fileHashName = TemporaryUploadedFile::generateHashNameWithOriginalNameEmbedded($file);
         $path = FileUploadConfiguration::path($fileHashName);
 
-        $command = $adapter->getClient()->getCommand('putObject', array_filter([
-            'Bucket' => $adapter->getBucket(),
+        $command = $client->getCommand('putObject', array_filter([
+            'Bucket' => $bucket,
             'Key' => $path,
             'ACL' => $visibility,
             'ContentType' => $fileType ?: 'application/octet-stream',
@@ -30,9 +56,9 @@ class GenerateSignedUploadUrl
             'Expires' => null,
         ]));
 
-        $signedRequest = $adapter->getClient()->createPresignedRequest(
+        $signedRequest = $client->createPresignedRequest(
             $command,
-            '+5 minutes'
+            '+' . FileUploadConfiguration::maxUploadTime() . ' minutes'
         );
 
         return [

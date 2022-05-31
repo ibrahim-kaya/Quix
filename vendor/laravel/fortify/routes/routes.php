@@ -5,6 +5,7 @@ use Laravel\Fortify\Features;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Fortify\Http\Controllers\ConfirmablePasswordController;
 use Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController;
+use Laravel\Fortify\Http\Controllers\ConfirmedTwoFactorAuthenticationController;
 use Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController;
 use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
 use Laravel\Fortify\Http\Controllers\NewPasswordController;
@@ -16,6 +17,7 @@ use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController;
 use Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController;
 use Laravel\Fortify\Http\Controllers\TwoFactorQrCodeController;
+use Laravel\Fortify\Http\Controllers\TwoFactorSecretKeyController;
 use Laravel\Fortify\Http\Controllers\VerifyEmailController;
 
 Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
@@ -23,132 +25,145 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
 
     // Authentication...
     if ($enableViews) {
-        Route::get('/giris-yap', [AuthenticatedSessionController::class, 'create'])
-            ->middleware(['guest'])
+        Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+            ->middleware(['guest:'.config('fortify.guard')])
             ->name('login');
     }
 
     $limiter = config('fortify.limiters.login');
     $twoFactorLimiter = config('fortify.limiters.two-factor');
+    $verificationLimiter = config('fortify.limiters.verification', '6,1');
 
-    Route::post('/giris-yap', [AuthenticatedSessionController::class, 'store'])
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->middleware(array_filter([
-            'guest',
+            'guest:'.config('fortify.guard'),
             $limiter ? 'throttle:'.$limiter : null,
         ]));
 
-    Route::post('/cikis-yap', [AuthenticatedSessionController::class, 'destroy'])
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
     // Password Reset...
     if (Features::enabled(Features::resetPasswords())) {
         if ($enableViews) {
-            Route::get('/sifremi-unuttum', [PasswordResetLinkController::class, 'create'])
-                ->middleware(['guest'])
+            Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+                ->middleware(['guest:'.config('fortify.guard')])
                 ->name('password.request');
 
-            Route::get('/sifre-sifirla/{token}', [NewPasswordController::class, 'create'])
-                ->middleware(['guest'])
+            Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
+                ->middleware(['guest:'.config('fortify.guard')])
                 ->name('password.reset');
         }
 
-        Route::post('/sifremi-unuttum', [PasswordResetLinkController::class, 'store'])
-            ->middleware(['guest'])
+        Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+            ->middleware(['guest:'.config('fortify.guard')])
             ->name('password.email');
 
-        Route::post('/sifre-sifirla', [NewPasswordController::class, 'store'])
-            ->middleware(['guest'])
+        Route::post('/reset-password', [NewPasswordController::class, 'store'])
+            ->middleware(['guest:'.config('fortify.guard')])
             ->name('password.update');
     }
 
     // Registration...
     if (Features::enabled(Features::registration())) {
         if ($enableViews) {
-            Route::get('/kaydol', [RegisteredUserController::class, 'create'])
-                ->middleware(['guest'])
+            Route::get('/register', [RegisteredUserController::class, 'create'])
+                ->middleware(['guest:'.config('fortify.guard')])
                 ->name('register');
         }
 
-        Route::post('/kaydol', [RegisteredUserController::class, 'store'])
-            ->middleware(['guest']);
+        Route::post('/register', [RegisteredUserController::class, 'store'])
+            ->middleware(['guest:'.config('fortify.guard')]);
     }
 
     // Email Verification...
     if (Features::enabled(Features::emailVerification())) {
         if ($enableViews) {
-            Route::get('/eposta/onay', [EmailVerificationPromptController::class, '__invoke'])
-                ->middleware(['auth'])
+            Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])
+                ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')])
                 ->name('verification.notice');
         }
 
-        Route::get('/eposta/onay/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-            ->middleware(['auth', 'signed', 'throttle:6,1'])
+        Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+            ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard'), 'signed', 'throttle:'.$verificationLimiter])
             ->name('verification.verify');
 
-        Route::post('/eposta/onay-bildirimi', [EmailVerificationNotificationController::class, 'store'])
-            ->middleware(['auth', 'throttle:6,1'])
+        Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+            ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard'), 'throttle:'.$verificationLimiter])
             ->name('verification.send');
     }
 
     // Profile Information...
     if (Features::enabled(Features::updateProfileInformation())) {
-        Route::put('/u/profil-ayarlari', [ProfileInformationController::class, 'update'])
-            ->middleware(['auth'])
+        Route::put('/user/profile-information', [ProfileInformationController::class, 'update'])
+            ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')])
             ->name('user-profile-information.update');
     }
 
     // Passwords...
     if (Features::enabled(Features::updatePasswords())) {
-        Route::put('/u/sifre', [PasswordController::class, 'update'])
-            ->middleware(['auth'])
+        Route::put('/user/password', [PasswordController::class, 'update'])
+            ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')])
             ->name('user-password.update');
     }
 
     // Password Confirmation...
     if ($enableViews) {
-        Route::get('/u/sifreyi-onayla', [ConfirmablePasswordController::class, 'show'])
-            ->middleware(['auth'])
-            ->name('password.confirm');
-
-        Route::get('/u/dogrulanmis-sifre-durumu', [ConfirmedPasswordStatusController::class, 'show'])
-            ->middleware(['auth'])
-            ->name('password.confirmation');
+        Route::get('/user/confirm-password', [ConfirmablePasswordController::class, 'show'])
+            ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')]);
     }
 
-    Route::post('/u/sifreyi-onayla', [ConfirmablePasswordController::class, 'store'])
-        ->middleware(['auth']);
+    Route::get('/user/confirmed-password-status', [ConfirmedPasswordStatusController::class, 'show'])
+        ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')])
+        ->name('password.confirmation');
+
+    Route::post('/user/confirm-password', [ConfirmablePasswordController::class, 'store'])
+        ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')])
+        ->name('password.confirm');
 
     // Two Factor Authentication...
     if (Features::enabled(Features::twoFactorAuthentication())) {
         if ($enableViews) {
-            Route::get('/iki-faktor-dogrulama', [TwoFactorAuthenticatedSessionController::class, 'create'])
-                ->middleware(['guest'])
+            Route::get('/two-factor-challenge', [TwoFactorAuthenticatedSessionController::class, 'create'])
+                ->middleware(['guest:'.config('fortify.guard')])
                 ->name('two-factor.login');
         }
 
-        Route::post('/iki-faktor-dogrulama', [TwoFactorAuthenticatedSessionController::class, 'store'])
+        Route::post('/two-factor-challenge', [TwoFactorAuthenticatedSessionController::class, 'store'])
             ->middleware(array_filter([
-                'guest',
+                'guest:'.config('fortify.guard'),
                 $twoFactorLimiter ? 'throttle:'.$twoFactorLimiter : null,
             ]));
 
         $twoFactorMiddleware = Features::optionEnabled(Features::twoFactorAuthentication(), 'confirmPassword')
-            ? ['auth', 'password.confirm']
-            : ['auth'];
+            ? [config('fortify.auth_middleware', 'auth').':'.config('fortify.guard'), 'password.confirm']
+            : [config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')];
 
-        Route::post('/u/iki-faktor-dogrulama', [TwoFactorAuthenticationController::class, 'store'])
-            ->middleware($twoFactorMiddleware);
+        Route::post('/user/two-factor-authentication', [TwoFactorAuthenticationController::class, 'store'])
+            ->middleware($twoFactorMiddleware)
+            ->name('two-factor.enable');
 
-        Route::delete('/u/iki-faktor-dogrulama', [TwoFactorAuthenticationController::class, 'destroy'])
-            ->middleware($twoFactorMiddleware);
+        Route::post('/user/confirmed-two-factor-authentication', [ConfirmedTwoFactorAuthenticationController::class, 'store'])
+            ->middleware($twoFactorMiddleware)
+            ->name('two-factor.confirm');
 
-        Route::get('/u/iki-faktor-qr', [TwoFactorQrCodeController::class, 'show'])
-            ->middleware($twoFactorMiddleware);
+        Route::delete('/user/two-factor-authentication', [TwoFactorAuthenticationController::class, 'destroy'])
+            ->middleware($twoFactorMiddleware)
+            ->name('two-factor.disable');
 
-        Route::get('/u/iki-faktor-kurtarma-kodu', [RecoveryCodeController::class, 'index'])
-            ->middleware($twoFactorMiddleware);
+        Route::get('/user/two-factor-qr-code', [TwoFactorQrCodeController::class, 'show'])
+            ->middleware($twoFactorMiddleware)
+            ->name('two-factor.qr-code');
 
-        Route::post('/u/iki-faktor-kurtarma-kodu', [RecoveryCodeController::class, 'store'])
+        Route::get('/user/two-factor-secret-key', [TwoFactorSecretKeyController::class, 'show'])
+            ->middleware($twoFactorMiddleware)
+            ->name('two-factor.secret-key');
+
+        Route::get('/user/two-factor-recovery-codes', [RecoveryCodeController::class, 'index'])
+            ->middleware($twoFactorMiddleware)
+            ->name('two-factor.recovery-codes');
+
+        Route::post('/user/two-factor-recovery-codes', [RecoveryCodeController::class, 'store'])
             ->middleware($twoFactorMiddleware);
     }
 });

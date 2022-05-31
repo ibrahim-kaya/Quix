@@ -5,12 +5,17 @@ namespace Laravel\Jetstream\Http\Controllers\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Agent\Agent;
+use Laravel\Fortify\Actions\DisableTwoFactorAuthentication;
+use Laravel\Fortify\Features;
 use Laravel\Jetstream\Jetstream;
 
 class UserProfileController extends Controller
 {
+    use Concerns\ConfirmsTwoFactorAuthentication;
+
     /**
      * Show the general profile settings screen.
      *
@@ -19,7 +24,10 @@ class UserProfileController extends Controller
      */
     public function show(Request $request)
     {
+        $this->validateTwoFactorAuthenticationState($request);
+
         return Jetstream::inertia()->render($request, 'Profile/Show', [
+            'confirmsTwoFactorAuthentication' => Features::optionEnabled(Features::twoFactorAuthentication(), 'confirm'),
             'sessions' => $this->sessions($request)->all(),
         ]);
     }
@@ -37,7 +45,7 @@ class UserProfileController extends Controller
         }
 
         return collect(
-            DB::table(config('session.table', 'sessions'))
+            DB::connection(config('session.connection'))->table(config('session.table', 'sessions'))
                     ->where('user_id', $request->user()->getAuthIdentifier())
                     ->orderBy('last_activity', 'desc')
                     ->get()

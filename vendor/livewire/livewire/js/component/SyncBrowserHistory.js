@@ -90,7 +90,7 @@ export default function () {
 
         let destination = new URL(url)
 
-        let afterOrigin = destination.href.replace(destination.origin, '')
+        let afterOrigin = destination.href.replace(destination.origin, '').replace(/\?$/, '')
 
         return window.location.origin + afterOrigin + window.location.hash
     }
@@ -147,6 +147,10 @@ let LivewireStateManager = {
         store.callHook('before'+capitalize(method), fullstateObject, url, component)
 
         try {
+            if (decodeURI(url) != 'undefined') {
+                url = decodeURI(url).replaceAll(' ', '+').replaceAll('\\', '%5C')
+            }
+
             history[method](fullstateObject, '', url)
         } catch (error) {
             // Firefox has a 160kb limit to history state entries.

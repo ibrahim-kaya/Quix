@@ -3,6 +3,7 @@
 namespace Laravel\Fortify\Http\Responses;
 
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use Laravel\Fortify\Fortify;
 
 class LoginResponse implements LoginResponseContract
 {
@@ -14,15 +15,8 @@ class LoginResponse implements LoginResponseContract
      */
     public function toResponse($request)
     {
-        if($request->wantsJson()) return response()->json(['two_factor' => false]);
-        else
-        {
-           if($request->url) return redirect($request->url);
-           else return redirect()->intended(config('fortify.home'));
-        }
-
-        /*return $request->wantsJson()
+        return $request->wantsJson()
                     ? response()->json(['two_factor' => false])
-                    : redirect()->intended(config('fortify.home'));*/
+                    : redirect()->intended(Fortify::redirects('login'));
     }
 }

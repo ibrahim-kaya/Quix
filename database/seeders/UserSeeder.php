@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         \App\Models\User::insert([
             'name'=>'XpDeviL',
-            'email'=>'kaya_ibrahim@msn.com',
+            'email'=>'iletisim@ibrahimkaya.dev',
             'email_verified_at' => now(),
             'type'=>'admin',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

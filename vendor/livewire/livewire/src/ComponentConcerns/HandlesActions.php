@@ -59,8 +59,8 @@ trait HandlesActions
         $name = str($name);
 
         $propertyName = $name->studly()->before('.');
-        $keyAfterFirstDot = $name->contains('.') ? $name->after('.') : null;
-        $keyAfterLastDot = $name->contains('.') ? $name->afterLast('.') : null;
+        $keyAfterFirstDot = $name->contains('.') ? $name->after('.')->__toString() : null;
+        $keyAfterLastDot = $name->contains('.') ? $name->afterLast('.')->__toString() : null;
 
         $beforeMethod = 'updating'.$propertyName;
         $afterMethod = 'updated'.$propertyName;
@@ -102,8 +102,10 @@ trait HandlesActions
         Livewire::dispatch('component.updated', $this, $name, $value);
     }
 
-    public function callMethod($method, $params = [])
+    public function callMethod($method, $params = [], $captureReturnValueCallback = null)
     {
+        $method = trim($method);
+
         switch ($method) {
             case '$sync':
                 $prop = array_shift($params);
@@ -119,7 +121,16 @@ trait HandlesActions
 
             case '$toggle':
                 $prop = array_shift($params);
-                $this->syncInput($prop, ! $this->{$prop}, $rehash = false);
+
+                if ($this->containsDots($prop)) {
+                    $propertyName = $this->beforeFirstDot($prop);
+                    $targetKey = $this->afterFirstDot($prop);
+                    $currentValue = data_get($this->{$propertyName}, $targetKey);
+                } else {
+                    $currentValue = $this->{$prop};
+                }
+
+                $this->syncInput($prop, ! $currentValue, $rehash = false);
 
                 return;
 
@@ -137,7 +148,7 @@ trait HandlesActions
 
         $returned = ImplicitlyBoundMethod::call(app(), [$this, $method], $params);
 
-        Livewire::dispatch('action.returned', $this, $method, $returned);
+        $captureReturnValueCallback && $captureReturnValueCallback($returned);
     }
 
     protected function methodIsPublicAndNotDefinedOnBaseClass($methodName)

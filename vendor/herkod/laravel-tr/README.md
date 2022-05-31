@@ -9,21 +9,20 @@ Aşağıdaki komutu kullanarak bu paketi composer ile projenize ekleyiniz.
 composer require herkod/laravel-tr
 ```
 
-Kurulum tamamlandığında dil dosyaları otomatik olarak `/resources/lang/tr/` dizini altına kopyalamak için aşağıdaki artisan komutunu kullanabilirsiniz. Eğer varlan dil dosyalarını güncellemek isterseniz komutun sonun `--force` parametresini ekleyebilirsiniz.
+Kurulum tamamlandığında dil dosyalarını otomatik olarak `/resources/lang/tr/` dizini altına kopyalamak için aşağıdaki artisan komutunu kullanabilirsiniz. Eğer varolan Türkçe dil dosyalarını güncellemek isterseniz komutun sonuna `--force` parametresini ekleyebilirsiniz.
+
 ```bash
 php artisan vendor:publish --tag=herkod-laravel-tr
 ```
 
-### Manuel Kurulum
-Paketi kurmadan da dil dosyalarını kullanabilirsiniz. Öncelikle [buradan repoyu indiriniz](https://github.com/herkod/laravel-tr/archive/master.zip). İndirdiğiniz zip'in içindeki `resources/lang/` içerisinde bulunan `tr` klasörünü projenizdeki `resources/lang/` altına kopyalayınız. Son hali aşağıdaki şekilde görünmelidir.
+Dilerseniz kurulum adımlarını tamamladıktan sonra aşağıdaki komut ile paketi projenizden kaldırabilirsiniz.
+```bash
+composer remove herkod/laravel-tr
+```
 
-    Laravel Projesi
-    ├── ...
-    ├── resources
-    │   ├── lang
-    │   |  ├── en
-    │   |  └── tr
-    └── ...
+### Manuel Kurulum
+Paketi kurmadan da dil dosyalarını kullanabilirsiniz. Öncelikle [buradan repoyu indiriniz](https://github.com/herkod/laravel-tr/archive/master.zip). İndirdiğiniz zip'in içindeki `resources/lang/` içerisinde bulunan `tr` klasörünü projenizdeki `resources/lang/` altına kopyalayınız.
+
 
 ### Laravel config Türkçe ayarı
 
@@ -32,6 +31,17 @@ Laravel projenizin dilini Türkçe'ye çevirmek için; `config/app.php` dosyası
 ```php
 'locale' => 'tr',
 ```
+
+### Kurulum Sonrası
+Kurulum başarıyla tamamlandığında `/resources/lang/` klasörünün son hali aşağıdaki şekilde görünmelidir.
+
+    Laravel Projesi
+    ├── ...
+    ├── resources
+    │   ├── lang
+    │   |  ├── en
+    │   |  └── tr
+    └── ...
 
 <br>
 <br>
